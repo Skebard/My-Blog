@@ -3,16 +3,21 @@ require "../Private/templates/header.php";
 ?>
 <main>
     <div class="title-wrapper">
-            <h1 class="page-title noselect">About</h1>
+            <h1 class="page-title noselect">Blog</h1>
     </div>
 
     <div id="posts-overview-id">
+            <div class='search-wrapper'>
+                <input type='text' placeholder="Search">
+                <i class="fas fa-search"></i>
+            </div>
             <ul class="categories-tags center max-width">
                 <li>Javascript</li>
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>PHP</li>
                 <li>MySql</li>
+                <li>Random</li>
             </ul>
             <div id="posts-container-id" class="posts-container center max-width">
                     <ul class="posts-page">

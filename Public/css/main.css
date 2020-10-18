@@ -27,6 +27,9 @@ a{
     text-decoration:none;
     color:inherit;
 }
+input{
+    outline:none;
+}
 /*** end tag's styles ***/
 
 /*** UTILS ***/
@@ -111,6 +114,13 @@ footer {
 /*** NAVIGATION BAR ***/
 
 
+header:after {
+    width: 90%;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-bottom: 1px solid #3e3b3b;
+}
 .navigation-bar>.fa-bars {
     font-size: 2rem;
     display: none;
@@ -222,6 +232,7 @@ footer {
     font-size: 4rem;
     border-bottom: 1px solid white;
     z-index:10;
+    text-transform: capitalize;
 }
 @media screen and (max-width:400px){
     .page-title{

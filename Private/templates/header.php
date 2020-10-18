@@ -7,7 +7,20 @@
 
 <head>
     <title>Antonio Jorda <?php echo $current_dir === 'blog'? 'Blog': ($current_dir ==='about'? 'About': ($current_dir ==='contact'?'Contact': '')); ?></title>
-    <?php 
+
+    
+    <link rel="stylesheet" href="../public/css/main.css">
+    <script defer src='../public/js/header.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- google Fonts roboto-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+        <!-- Font Awesome icons-->
+        <script src="https://kit.fontawesome.com/9547750bbd.js" crossorigin="anonymous"></script>
+
+        <?php 
     //Set scripts and styles depending on the page
     if($current_dir ==='blog'){
         echo '<link rel="stylesheet" href="../public/css/index.css">';
@@ -22,19 +35,6 @@
     }
     
     ?>
-    
-    <link rel="stylesheet" href="../public/css/main.css">
-    <script defer src='../public/js/header.js'></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- google Fonts roboto-->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-        <!-- Font Awesome icons-->
-        <script src="https://kit.fontawesome.com/9547750bbd.js" crossorigin="anonymous"></script>
-
-
     </head>
 
 <body >
