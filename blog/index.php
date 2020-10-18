@@ -1,65 +1,12 @@
-<!DOCTYPE html>
-<html lang=en>
+<?php
+require "../Private/templates/header.php";
+?>
+<main>
+    <div class="title-wrapper">
+            <h1 class="page-title noselect">About</h1>
+    </div>
 
-<head>
-    <title>My blog</title>
-    <link rel="stylesheet" href="public/css/index.css">
-    <link rel="stylesheet" href="public/css/blog.css">
-    <script defer src="js/blog/script.js"></script>
-    <script defer src='public/js/blog/blog.js'></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- google Fonts roboto-->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-        <!-- Font Awesome icons-->
-        <script src="https://kit.fontawesome.com/9547750bbd.js" crossorigin="anonymous"></script>
-
-
-    </head>
-
-<body >
-    <header>
-        <nav class="navigation-bar">
-            <i id="btn-menu" class="fa fa-bars"></i>
-            <div id='modal-nav-menu-id' class='modal-nav-menu'>
-                <i id="btn-close-modal-menu" class="fas fa-times"></i>
-                <ul id="nav-menu-id" class='select-section'>
-                    <li class="active">
-                        Blog
-                    </li>
-                    <li>
-                        About
-                    </li>
-                    <li>
-                        Contact
-                    </li>
-                </ul>
-            </div>
-
-        </nav>
-    </header>
-    <main>
-        <div id="loading-id" class="animation-wrapper">
-            <div class="lds-ripple">
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div id="posts-overview-id">
-            <div class="first-post-wrapper">
-                <div class="first-post">
-                    <h1 class="post-title">POST TITLE</h1>
-                    <div class="post-body">
-                        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                            Ut malesuada sapien malesuada felis imperdiet rutrum. Ut suscipit nec erat vel fermentum.
-                            Integer eu lorem ipsum. Nunc vel gravida neque, varius pellentesque lectus. Phasellus
-                            ultricies felis varius felis tem</p>
-                        <a href="#">Read More >></a>
-                    </div>
-                </div>
-            </div>
+    <div id="posts-overview-id">
             <ul class="categories-tags center max-width">
                 <li>Javascript</li>
                 <li>HTML</li>
@@ -68,7 +15,6 @@
                 <li>MySql</li>
             </ul>
             <div id="posts-container-id" class="posts-container center max-width">
-                
                     <ul class="posts-page">
                         <li class="post-summary">
                             <img src="https://picsum.photos/650/500?t=1" alt="post-image">
@@ -176,71 +122,7 @@
                     </li>-->
             </ul>
         </div>
-        <!--
-        <div class="single-post active">
-            <div class="poster-post">
+</main>
 
-            </div>
-            <div class="post-content max-width">
-                <h1 class="post-title">POST asdfasdf asfda asdf asdfa asdfas title</h1>
-                <div class="author-info">
-                    <h4>by <span class="author-name">Author</span></h4>
-                    <h5 class="email">email@gmail.com</h5>
-                </div>
-                <p>
-                    tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
-                    rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
-                    consectetur bibendum. Fusce maximus elit id pretium tincidunt. Etiam vel lorem congue, molestie
-                    lorem at, congue massa. Aliquam aliquet nibh at magna rutrum commodo. Nullam commodo diam nisi, nec
-                    placerat mi eleifend efficitur. Aliquam er
-                </p>
-                <div class="comments-container">
-                    <h2 class="comments-title">Comments <button class="btn-comments show">show</button></h2>
-                    <ul class="comments">
-                        <li>
-                            <h4 class="comment-name">Comment name</h4>
-                            <p>tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
-                                rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
-                                consectetur bibendum.</p>
-                            <small class="comment-email">email@gmail.com</small>
-                        </li>
-                        <li>
-                            <h4 class="comment-name">Comment name</h4>
-                            <p>tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
-                                rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
-                                consectetur bibendum.</p>
-                            <small class="comment-email">email@gmail.com</small>
-                        </li>
-                        <li>
-                            <h4 class="comment-name">Comment name</h4>
-                            <p>tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
-                                rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
-                                consectetur bibendum.</p>
-                            <small class="comment-email">email@gmail.com</small>
-                        </li>
-                        <li>
-                            <h4 class="comment-name">Comment name</h4>
-                            <p>tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
-                                rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
-                                consectetur bibendum.</p>
-                            <small class="comment-email">email@gmail.com</small>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-
-        </div>-->
-
-
-    </main>
-    <footer>
-        <ul class="social-media-icons">
-            <li><a href="https://github.com/Skebard" target="_blank"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/tjorda/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-    </footer>
-
-</body>
-
-</html>
+<?php
+require "../Private/templates/footer.php";

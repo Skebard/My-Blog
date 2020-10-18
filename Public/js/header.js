@@ -1,4 +1,3 @@
-//(function(){});
 
 let menuBtn = document.getElementById("btn-menu");
 let modalNavMenu = document.getElementById('modal-nav-menu-id')
@@ -9,5 +8,7 @@ menuBtn.addEventListener('click',()=>{
 });
 btnCloseMenu.addEventListener('click',()=>{
     modalNavMenu.classList.add('hidden');
-
+});
+modalNavMenu.addEventListener('click',()=>{
+    modalNavMenu.classList.add('hidden');
 });
