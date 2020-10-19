@@ -54,9 +54,6 @@ input{
     max-width: 960px;
 }
 .center{
-    position:relative;
-    left:0;
-    right:0;
     margin:0 auto;
 }
 
@@ -200,7 +197,7 @@ header:after {
 /*** end navigation bar ***/
 
 
-
+/*** TITLE ***/
 .title-wrapper {
     background-image: url("https://picsum.photos/1400/1200");
     background-size: cover;
@@ -227,7 +224,6 @@ header:after {
 }
 
 
-
 .page-title {
     font-size: 4rem;
     border-bottom: 1px solid white;
@@ -239,7 +235,12 @@ header:after {
         font-size: 3rem;
     }
 }
-
+/*** end title ***/
+/*** PAGE CONTENT ***/
+.page-wrapper{
+    margin:1rem 0;
+}
+/*** end page content ***/
 
 
 

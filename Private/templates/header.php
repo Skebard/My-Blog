@@ -20,11 +20,12 @@
         <!-- Font Awesome icons-->
         <script src="https://kit.fontawesome.com/9547750bbd.js" crossorigin="anonymous"></script>
 
-        <?php 
+        <?php
     //Set scripts and styles depending on the page
     if($current_dir ==='blog'){
-        echo '<link rel="stylesheet" href="../public/css/index.css">';
+        // echo '<link rel="stylesheet" href="../public/css/index.css">';
         echo '<link rel="stylesheet" href="../public/css/blog.css">';
+        echo '<script defer src="../public/js/blog/blog.js"></script>';
 
     }else if($current_dir === 'about'){
 
@@ -58,4 +59,4 @@
 
         </nav>
     </header>
-    <?php 
+    <?php
