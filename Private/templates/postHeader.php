@@ -9,8 +9,8 @@
     <title>Antonio Jorda Blog</title>
 
     
-    <link rel="stylesheet" href="../../public/css/main.css">
-    <link rel="stylesheet" href="../../public/css/post.css">
+    <link rel="stylesheet" href="../../Public/css/main.css">
+    <link rel="stylesheet" href="../../Public/css/post.css">
 
     <script defer src='../../public/js/header.js'></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">

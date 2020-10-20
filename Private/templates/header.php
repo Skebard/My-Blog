@@ -9,8 +9,8 @@
     <title>Antonio Jorda <?php echo $current_dir === 'blog'? 'Blog': ($current_dir ==='about'? 'About': ($current_dir ==='contact'?'Contact': '')); ?></title>
 
     
-    <link rel="stylesheet" href="../public/css/main.css">
-    <script defer src='../public/js/header.js'></script>
+    <link rel="stylesheet" href="../Public/css/main.css">
+    <script defer src='../Public/js/header.js'></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- google Fonts roboto-->

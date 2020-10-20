@@ -6,7 +6,8 @@
  * clicked 
  */
 //todo CONSTANTS
-const POSTS_PER_PAGE = 7;
+const POSTS_PER_PAGE = 5;
+const POSTS_URL = 'posts/';
 
 //todo HTML elemens
 //let loadingHTML = document.getElementById("loading-id");
@@ -18,6 +19,7 @@ let postsContainer = document.getElementById("posts-container-id");
 //let myBlog = new Blog();
 //myBlog.displayPosts();
 let tInfo = {
+    url:"posts/0.php",
     id:1,
     title: "new post title",
     body: "this is the body of the new post"
@@ -33,7 +35,7 @@ class Blog{
             this.clickableElements.forEach((post)=>{
                 post.clickable.forEach((el)=>{
                     if(el===e.target){
-                        //open post;
+                        //open post;            //! WAITING BACKEND
                         console.log(post.id);
                         window.open("../about","_self");
                     }
@@ -72,16 +74,26 @@ class Blog{
         postSummary.append(imgPost,post);
         this.container.appendChild(postSummary);
         this.clickableElements.push( {
+            url:postInfo.url,
             id:postInfo.id,
             clickable:[imgPost,postTitle,postBodyReadMore]
         });
     }
+    //displays more posts
     loadMore(){
         
     }
 
 }
 
+
+function getNewPosts(offset){
+    let url = POSTS_URL +"?offset="+offset+"&limit="+POSTS_PER_PAGE;
+    fetch(url)
+    .then(resp=>resp.json())
+    .then(data=>console.log(data));
+
+}
 
 let myBlog = new Blog(postsContainer);
 

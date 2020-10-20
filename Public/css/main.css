@@ -73,6 +73,31 @@ input{
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 }
 
+.subtitle{
+    font-size:2.5rem;
+    margin:1.8rem 0 0.5rem;
+}
+.text-content{
+    font-size:1.2rem;
+}
+@media screen and (max-width:960px){
+    .subtitle{
+        font-size:2rem;
+    }
+    .text-content{
+        font-size:1rem;
+    }
+}
+@media screen and (max-width:550px){
+    .text-content{
+        font-size:0.8rem;
+    }
+    .subtitle{
+        font-size:1.4rem;
+    }
+}
+
+
 /*** end utils ***/
 
 /*** MAIN LAYOUT ***/
@@ -230,9 +255,9 @@ header:after {
     z-index:10;
     text-transform: capitalize;
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:550px){
     .page-title{
-        font-size: 3rem;
+        font-size: 2rem;
     }
 }
 /*** end title ***/

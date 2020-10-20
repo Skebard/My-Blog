@@ -132,6 +132,7 @@
     padding:1.4rem;
     padding-bottom:0.4rem;
     padding-top:1rem;
+    cursor:pointer;
 }
 .load-more:hover{
     background-color: rgb(255, 149, 104);

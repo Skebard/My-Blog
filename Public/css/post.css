@@ -11,10 +11,20 @@
 
 .single-post>.poster-post {
     width: 100%;
-    min-height: 500px;
+    height: 500px;
     background-image: url("https://picsum.photos/1400/1120?t=1");
     background-repeat: no-repeat;
     background-size: cover;
+}
+@media screen and (max-height:700px){
+    .single-post>.poster-post{
+        height:400px;
+    }
+}
+@media screen and (max-height:550px){
+    .single-post>.poster-post{
+        height:250px;
+    }
 }
 
 .post-content .post-title {
@@ -26,16 +36,31 @@
     border-bottom: 2px solid black;
     cursor: default;
 }
+@media screen and (max-width:550px){
+    .post-content .post-title{
+        font-size: 2rem;
+    }
+}
 
 .post-content .author-info {
     margin-top: 1rem;
     margin-bottom: 2rem;
+    display:flex;
+    align-items:flex-end
 }
 
-.post-content .author-name,
-.post-content .email {
+.author-info .author-photo{
+    height:50px;
+    width: 50px;
+    object-fit:cover;
+    border-radius:50%;
+    position:relative;
+    margin-right:1rem;
+}
+
+.post-content .author-name{
     color: #08a5cb;
-    cursor: default;
+    cursor: pointer;
 }
 
 /*** Comments**/
