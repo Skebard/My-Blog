@@ -64,7 +64,8 @@
 }
 
 .post-summary .post-title {
-    font-size: 3.2rem;
+    min-width:40%;
+    font-size: 2.8rem;
     border-bottom: 1px solid black;
 }
 
@@ -87,6 +88,7 @@
     cursor: pointer;
 }
 
+
 .post {
     display: flex;
 }
@@ -101,6 +103,31 @@
         margin-bottom: 1rem;
     }
 }
+
+.post-body{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.post-body .author-info {
+    display:flex;
+    align-items:flex-end
+}
+
+.author-info .author-photo{
+    height:50px;
+    width: 50px;
+    object-fit:cover;
+    border-radius:50%;
+    position:relative;
+    margin-right:1rem;
+}
+
+.post-body .author-name{
+    color: #08a5cb;
+    cursor: pointer;
+}
+
 
 /*** end POSTS ***/
 /*** LOAD MORE BUTTON ***/

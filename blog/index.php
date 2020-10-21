@@ -24,10 +24,19 @@ require "../Private/templates/header.php";
                 <li class="post-summary">
                     <img src="https://picsum.photos/650/500?t=1" alt="post-image">
                     <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
+                        <h2 class="post-title">Creating a CMS for a blog</h2>
                         <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
+                            <div>
+                                <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
+                                <a href="#">Read More >></a>
+                            </div>
+                            <div class="author-info">
+                                <a href="#"><img class="author-photo" src="../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                                <div>
+                                    <h4><span class="author-name">Antonio Jorda</span></h4>
+                                    <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>

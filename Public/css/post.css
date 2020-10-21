@@ -1,8 +1,6 @@
 
 /** single post*/
 .post-content {
-    right: 0;
-    left: 0;
     margin: 0 auto;
     width: 80%;
     position: relative;
@@ -160,4 +158,36 @@
 .comment-email {
     color: grey;
     margin-top: 0.5rem;
+}
+
+
+/*** RELATED POSTS ***/
+.main-category{
+    cursor: pointer;
+    background-color: rgb(255, 191, 104);
+    padding: 0.6rem;
+    width:fit-content;
+}
+.related-posts-wrapper{
+    margin:1rem 0;
+}
+.related-posts-wrapper > li{
+    display:flex;
+}
+.related-posts-wrapper > li:not(:last-child){
+    margin-bottom:1rem;
+}
+.related-post-info{
+    margin-left:1rem;
+    display:flex;
+    flex-direction:column;
+}
+.related-post-info .title{
+    font-size:1.6rem;
+}
+.related-post-info .author-info{
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
 }

@@ -33,14 +33,14 @@ require '../../Private/templates/postHeader.php';
                 placerat mi eleifend efficitur. Aliquam er
             </p>
             <h2 class="subtitle">My Subtitle</h2>
-            <p>
+            <p class="text-content">
                 tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
                 rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
                 consectetur bibendum. Fusce maximus elit id pretium tincidunt. Etiam vel lorem congue, molestie
                 lorem at, congue massa. Aliquam aliquet nibh at magna rutrum commodo. Nullam commodo diam nisi, nec
                 placerat mi eleifend efficitur. Aliquam er
             </p>
-            <h2>My Subtitle</h2>
+            <h2 class="subtitle">My Subtitle</h2>
             <div class="comments-container">
                 <h2 class="comments-title">Comments <button class="btn-comments show">show</button></h2>
                 <ul class="comments">
@@ -75,6 +75,55 @@ require '../../Private/templates/postHeader.php';
 
                 </ul>
             </div>
+        </div>
+        <div class='max-width center '>
+            <ul class="related-posts-wrapper">
+                <li>
+                    <img src='https://picsum.photos/250/200?t=2'>
+                    <div class="related-post-info">
+                        <div class="main-category">PHP</div>
+                        <h4 class="title">Making incredible things with PHP</h4>
+                        <div class="author-info">
+                            <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                            <div>
+                                <h4><span class="author-name">Antonio Jorda</span></h4>
+                                <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+                <li>
+                    <img src='https://picsum.photos/250/200?t=5'>
+                    <div class="related-post-info">
+                        <div class="main-category">CSS</div>
+                        <h4 class="title">Breathtaking effects with CSS</h4>
+                        <div class="author-info">
+                            <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                            <div>
+                                <h4><span class="author-name">Antonio Jorda</span></h4>
+                                <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+                <li>
+                    <img src='https://picsum.photos/250/200?t=4'>
+                    <div class="related-post-info">
+                        <div class="main-category">Javascript</div>
+                        <h4 class="title">Starting with ES6</h4>
+                        <div class="author-info">
+                            <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                            <div>
+                                <h4><span class="author-name">Antonio Jorda</span></h4>
+                                <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
         </div>
 
     </div>
