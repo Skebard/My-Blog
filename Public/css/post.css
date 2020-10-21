@@ -42,9 +42,36 @@
     }
 }
 
+
+/*** POST INFO ***/
+.post-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:1rem;
+    margin-bottom:2rem;
+    align-items:flex-end;
+}
+
+.post-info > .categories-tags{
+    margin: 0;
+    flex-grow:1;
+    justify-content:flex-end;
+}
+.post-info > .categories-tags > li{
+    height:fit-content;
+}
+@media screen and (max-width: 660px){
+    .post-info{
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    .post-info > .categories-tags{
+        justify-content:flex-start;
+    }
+}
+/*** end post info ***/
+/*** AUTHOR INFO ***/
 .post-content .author-info {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
     display:flex;
     align-items:flex-end
 }
@@ -62,6 +89,7 @@
     color: #08a5cb;
     cursor: pointer;
 }
+/*** end author info ***/
 
 /*** Comments**/
 .comments {

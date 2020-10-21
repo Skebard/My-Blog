@@ -36,8 +36,8 @@ class Blog{
                 post.clickable.forEach((el)=>{
                     if(el===e.target){
                         //open post;            //! WAITING BACKEND
-                        console.log(post.id);
-                        window.open("../about","_self");
+                        console.log(post.url);
+                        window.open(post.url,"_self");
                     }
                 })
             });
@@ -80,18 +80,26 @@ class Blog{
         });
     }
     //displays more posts
-    loadMore(){
-        
+    async loadMore(){
+        let response = await getPosts(this.offset);
+        console.log(response);
+        response.results.forEach((post)=>{
+            this.addPost(post);
+        });
+        this.offset +=response.results.length;
     }
-
 }
 
 
-function getNewPosts(offset){
+async function printPosts(){
+    let posts = await getPosts(6);
+    console.log(posts);
+}
+
+function getPosts(offset){
     let url = POSTS_URL +"?offset="+offset+"&limit="+POSTS_PER_PAGE;
-    fetch(url)
-    .then(resp=>resp.json())
-    .then(data=>console.log(data));
+    return fetch(url)
+    .then(resp=>resp.json());
 
 }
 
@@ -207,20 +215,20 @@ function Bloga(){
 }
 
 
-//returns a promise with an array of all the available posts
-function getPosts(){
-    let requestURL = ROOT_URL + "posts";
-    return fetch(requestURL)
-    .then((response)=>{
-        if(!response.ok){
-            throw new Error (response.status);
-        }
-        return response.json()})
-    .catch((error)=> {
-        console.log("The error "+error+" ocurred");
-        return false;
-    });
-}
+// //returns a promise with an array of all the available posts
+// function getPosts(){
+//     let requestURL = ROOT_URL + "posts";
+//     return fetch(requestURL)
+//     .then((response)=>{
+//         if(!response.ok){
+//             throw new Error (response.status);
+//         }
+//         return response.json()})
+//     .catch((error)=> {
+//         console.log("The error "+error+" ocurred");
+//         return false;
+//     });
+// }
 
 
 //return an array with the indicated posts
@@ -246,11 +254,6 @@ we will get count:0
 
 
 */
-function getPosts(offset,limit){
-
-}
-
-
 
 //Displays the loading animation
 function displayLoading(){

@@ -24,25 +24,7 @@
 
 /*** end search post ***/
 
-/*** CATEGORY TAGS ***/
-.categories-tags {
-    margin: 1rem auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
 
-.categories-tags>li {
-    cursor: pointer;
-    background-color: rgb(255, 191, 104);
-    margin: 0.5rem;
-    padding: 0.6rem;
-}
-
-.categories-tags>li:hover {
-    background-color: rgb(255, 149, 104);
-}
-/*** end category tags ***/
 
 /*** POSTS ***/
 .posts-container {

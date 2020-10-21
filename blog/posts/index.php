@@ -6,12 +6,14 @@ $offset = $_GET['offset']?? 'undefined';
 $response->limit = $limit;
 $response->offset =$offset;
 $response->results = [];
+$response->count = 0;
 //mock data
 for($i=$offset+1; $i<=($offset+$limit); $i++){
     if($i>18){
-        $response->count = ($offset+$limit)-$i;
+        //$response->count = ($offset+$limit)-$i;
         break;
     }
+    $response->count+=1;
     $post = new stdClass;
     $post->id = $i;
     $post->title = 'Post title '.$i;
