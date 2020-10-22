@@ -12,6 +12,7 @@ const POSTS_URL = 'posts/';
 //todo HTML elemens
 //let loadingHTML = document.getElementById("loading-id");
 let postsContainer = document.querySelector("#posts-container-id .posts-page");
+let categoriesContainer = document.querySelector("#posts-overview-id > .categories-tags");
 //let pagination = document.getElementById("pagination-id");
 //let postsOverview = document.getElementById("posts-overview-id");
 
@@ -47,7 +48,9 @@ class Blog{
             });
         });
     }
-    constructor(container){
+    constructor(container,categoriesContainer){
+        this.category = "any";
+        this.categoriesContainer = categoriesContainer;
         this.container = container;
         this.hello = 0;
         this.offset = 0;
@@ -114,27 +117,51 @@ class Blog{
     }
     //displays more posts
     async loadMore(){
-        let response = await getPosts(this.offset);
+        let response = await getPosts(this.offset,this.category);
         console.log(response);
         response.results.forEach((post)=>{
             this.addPost(post);
         });
         this.offset +=response.results.length;
     }
+    async printCategories(){
+        let categories = await getCategories();
+        this.categoriesContainer.innerHTML = "";
+        categories.forEach(category=>{
+            let newCategory = document.createElement('li');
+            newCategory.textContent = category;
+            newCategory.addEventListener('click',e=>{
+                this.offset = 0;
+                this.category =category;
+                this.container.innerHTML = "";
+                this.loadMore();
+            });
+            this.categoriesContainer.appendChild(newCategory);
+        });
+    }
+
+    async textSearch(){
+        //! FINISH
+    }
 }
 
 
-function getPosts(offset){
-    let url = POSTS_URL +"?offset="+offset+"&limit="+POSTS_PER_PAGE;
+function getPosts(offset,category="any"){
+    let url = POSTS_URL +"?offset="+offset+"&limit="+POSTS_PER_PAGE+"&category="+category;
     return fetch(url)
     .then(resp=>resp.json());
-
 }
 
-let myBlog = new Blog(postsContainer);
+function getCategories(){
+    let url = POSTS_URL+"?categories";
+    return fetch(url)
+    .then(resp=>resp.json());
+}
+
+let myBlog = new Blog(postsContainer,categoriesContainer);
 
 
-
+//search by main category
 
 //Displays the loading animation
 function displayLoading(){
