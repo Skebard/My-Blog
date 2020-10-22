@@ -7,7 +7,7 @@ require "../Private/templates/header.php";
     </div>
 
     <div id="posts-overview-id" class="page-wrapper">
-        <div class='search-wrapper'>
+        <div class='search-wrapper max-width'>
             <input type='text' placeholder="Search">
             <i class="fas fa-search"></i>
         </div>
@@ -22,102 +22,67 @@ require "../Private/templates/header.php";
         <div id="posts-container-id" class="posts-container center max-width">
             <ul class="posts-page">
                 <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
+                    <div class="post-image-wrapper">
+                        <img src="https://picsum.photos/650/500?t=1" alt="post-image">
+                        <div class="author-info">
+                            <a href="#"><img class="author-photo" src="../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                            <span class="author-name">Antonio Jorda</span>
+                        </div>
+                    </div>
                     <div class="post">
                         <h2 class="post-title">Creating a CMS for a blog</h2>
+                        <h5 class="post-date">Oct 13, 2020 11:44:14 AM</h5>
                         <div class="post-body">
                             <div>
                                 <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
                                 <a href="#">Read More >></a>
                             </div>
-                            <div class="author-info">
-                                <a href="#"><img class="author-photo" src="../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
-                                <div>
-                                    <h4><span class="author-name">Antonio Jorda</span></h4>
-                                    <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
-                                </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="post-summary">
+                    <div class="post-image-wrapper">
+                        <img src="https://picsum.photos/650/500?t=3" alt="post-image">
+                        <div class="author-info">
+                            <a href="#"><img class="author-photo" src="../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                            <span class="author-name">Antonio Jorda</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <h2 class="post-title">Creating a CMS for a blog</h2>
+                        <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+                        <div class="post-body">
+                            <div>
+                                <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
+                                <a href="#">Read More >></a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
+                    <div class="post-image-wrapper">
+                        <img src="https://picsum.photos/650/500?t=5" alt="post-image">
+                        <div class="author-info">
+                            <a href="#"><img class="author-photo" src="../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
+                            <span class="author-name">Antonio Jorda</span>
+                        </div>
+                    </div>
                     <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
+                        <h2 class="post-title">Creating a CMS for a blog</h2>
+                        <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
                         <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
+                            <div>
+                                <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
+                                <a href="#">Read More >></a>
+                            </div>
                         </div>
                     </div>
                 </li>
-                <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
-                    <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
-                        <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
-                    <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
-                        <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="posts-page hidden">
-                <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
-                    <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
-                        <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
-                    <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
-                        <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
-                    <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
-                        <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
-                        </div>
-                    </div>
-                </li>
-                <li class="post-summary">
-                    <img src="https://picsum.photos/650/500?t=1" alt="post-image">
-                    <div class="post">
-                        <h2 class="post-title">POST TITLE</h2>
-                        <div class="post-body">
-                            <p class="fade">The term “micro content” is something I started using three or four years ago. The notion was: content made specifically for the platform. You know, the videos, the pictures, the quotes, the written words that work on Faceb</p>
-                            <a href="#">Read More >></a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <ul id="test-posts" class="posts-page ">
 
             </ul>
+
+
+         
 
 
         </div>

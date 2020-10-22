@@ -1,7 +1,7 @@
 /*** SEARCH POST ***/
 .search-wrapper {
     position: relative;
-    margin: 1rem;
+    margin: 1rem auto;
 }
 
 .search-wrapper>input {
@@ -46,26 +46,27 @@
 .post-summary {
     color: black;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 3.5rem;
 }
 
 .post-summary>* {
     width: 100%;
 }
-
-.post-summary>img {
+.post-image-wrapper{
+    position:relative;
+}
+.post-image-wrapper > img {
     position: relative;
-    margin: 1rem auto;
+    margin-right:1rem;
     height: auto;
-    max-height: 450px;
+    max-height: 250px;
     cursor: pointer;
 }
 
 .post-summary .post-title {
     min-width:40%;
-    font-size: 2.8rem;
+    font-size: 2rem;
     border-bottom: 1px solid black;
 }
 
@@ -91,16 +92,28 @@
 
 .post {
     display: flex;
+    flex-direction:column;
 }
-@media screen and (max-width:650px) {
-
+@media screen and (max-width:800px) {
+    .post-summary{
+        flex-direction:column;
+    }
+    .post-image-wrapper{
+        width:fit-content;
+        margin: 1rem auto 1.5rem auto;
+    }
+    .post-image-wrapper > img{
+        width:100%;
+        max-height:none;
+        min-height:250px;
+        object-fit:cover;
+    }
     .post {
         flex-wrap: wrap;
     }
 
     .post-summary .post-title {
-        font-size:2.4rem;
-        margin-bottom: 1rem;
+        font-size:1.8rem;
     }
 }
 
@@ -109,23 +122,41 @@
     flex-direction:column;
     justify-content:space-between;
 }
-.post-body .author-info {
-    display:flex;
-    align-items:flex-end
+.post-image-wrapper .author-info {
+    position:absolute;
+    left:0;
+    bottom:0;
+    transform: translate(-20%,20%);
+}
+.post-date{
+    margin-bottom:1rem;
 }
 
-.author-info .author-photo{
-    height:50px;
-    width: 50px;
+.author-photo{
+    height:60px;
+    width: 60px;
     object-fit:cover;
     border-radius:50%;
-    position:relative;
     margin-right:1rem;
 }
+.author-info:hover .author-photo{
+    transform:scale(1.2);
+}
 
-.post-body .author-name{
+.post-image-wrapper .author-name{
     color: #08a5cb;
     cursor: pointer;
+    position:absolute;
+    left:100%;
+    bottom:1rem;
+    background-color:white;
+    padding:0.5rem;
+    width:max-content;
+    border-radius:0.5rem;
+    display:none;
+}
+.author-info:hover .author-name{
+    display:block;
 }
 
 

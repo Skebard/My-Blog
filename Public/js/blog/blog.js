@@ -11,7 +11,7 @@ const POSTS_URL = 'posts/';
 
 //todo HTML elemens
 //let loadingHTML = document.getElementById("loading-id");
-let postsContainer = document.getElementById("posts-container-id");
+let postsContainer = document.querySelector("#posts-container-id .posts-page");
 //let pagination = document.getElementById("pagination-id");
 //let postsOverview = document.getElementById("posts-overview-id");
 
@@ -22,7 +22,11 @@ let tInfo = {
     url:"posts/0.php",
     id:1,
     title: "new post title",
-    body: "this is the body of the new post"
+    body: "this is the body of the new post",
+    author: "Antonio Jorda",
+    authorLink:"url",
+    date: "ocasdfadf",
+    image:'url'
 }
 
 
@@ -55,23 +59,52 @@ class Blog{
     addPost(postInfo){
         let postSummary = document.createElement("li");
         postSummary.classList.add("post-summary");
+        let imageWrapper = document.createElement("div");
+        imageWrapper.classList.add("post-image-wrapper");
+
         let imgPost = document.createElement("img");
-        imgPost.src = "https://picsum.photos/650/500?t"+postInfo.id;
+        imgPost.src = "https://picsum.photos/650/500?t"+postInfo.id;        //!change for correct image url
+
+        let authorInfo = document.createElement('div');
+        authorInfo.classList.add('author-info');
+        let authorPhotoLink = document.createElement("a");
+        authorPhotoLink.setAttribute('href','#');           //!put correct link
+        let authorPhoto = document.createElement('img');
+        authorPhoto.classList.add('author-photo');
+        authorPhoto.src = "../Public/images/authorAntonioJorda2.png"; //! correct link
+        authorPhotoLink.appendChild(authorPhoto);
+        let authorName = document.createElement('span');
+        authorName.classList.add("author-name");
+        authorName.textContent = "Antonio Jorda"; //! correct name
+        authorInfo.append(authorPhotoLink,authorName);
+
+        imageWrapper.append(imgPost,authorInfo);
+
         let post = document.createElement("div");
         post.classList.add("post");
+
         let postTitle = document.createElement("h2");
         postTitle.classList.add("post-title");
         postTitle.textContent = postInfo.title;
+        let postDate = document.createElement('h5');
+        postDate.classList.add('post-date');
+        postDate.textContent = String( new Date());
         let postBody = document.createElement("div");
         postBody.classList.add("post-body");
+        let postBodyTextWrapper = document.createElement('div');
         let postBodyText = document.createElement("p");
         postBodyText.classList.add("fade");
         postBodyText.textContent = postInfo.body;
         let postBodyReadMore = document.createElement("a");
+        postBodyReadMore.setAttribute('href','#');
         postBodyReadMore.textContent = "Read More >>";
-        postBody.append(postBodyText,postBodyReadMore);
-        post.append(postTitle,postBody);
-        postSummary.append(imgPost,post);
+        postBodyTextWrapper.append(postBodyText,postBodyReadMore);
+
+        postBody.appendChild(postBodyTextWrapper);
+
+        post.append(postTitle,postDate,postBody);
+
+        postSummary.append(imageWrapper,post);
         this.container.appendChild(postSummary);
         this.clickableElements.push( {
             url:postInfo.url,

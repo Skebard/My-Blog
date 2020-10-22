@@ -170,7 +170,7 @@ header:after {
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
     font-weight: 900;
-    text-shadow: 0 0 1rem black;
+ 
 }
 
 .navigation-bar ul li {
@@ -180,7 +180,9 @@ header:after {
     cursor: pointer;
     -moz-user-select: none;
     user-select: none;
+    border-bottom: 3px solid white;
 }
+
 
 .navigation-bar ul li:not(:last-child) {
     margin-right: 1rem;
@@ -188,7 +190,7 @@ header:after {
 
 .navigation-bar ul li:hover {
     color: black;
-    text-shadow: 0 0 1rem orange;
+    border-bottom: 3px solid rgb(255, 191, 104);
 }
 
 .navigation-bar ul li.active {
@@ -210,7 +212,7 @@ header:after {
         width:100%;
         height:100%;
         z-index:100;
-        background-color:red;
+        background-color:white;
     }
     .modal-nav-menu.hidden{
         display:none;
@@ -220,6 +222,10 @@ header:after {
     }
     .modal-nav-menu > .fa-times{
     display:block;
+    }
+    .navigation-bar ul li{
+        margin-bottom:0.4rem;
+        width:100%;
     }
 }
 /*** end navigation bar ***/
