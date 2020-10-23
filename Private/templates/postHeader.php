@@ -1,6 +1,7 @@
 <?php
     $current_file_name = basename($_SERVER['PHP_SELF']);
     $current_dir = basename(getcwd());
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang=en>

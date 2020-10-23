@@ -1,5 +1,6 @@
 <?php
 require "../Private/templates/header.php";
+$_SESSION['step']="I am in step 1";
 ?>
 <main>
     <div class="title-wrapper">

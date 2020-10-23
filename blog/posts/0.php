@@ -74,6 +74,18 @@ require '../../Private/templates/postHeader.php';
                     </li>
 
                 </ul>
+                <div class="add-comment-wrapper">
+                    <form class="add-comment-form" >
+                        <legend>Add your comment</legend>
+                        <label for="" >Your name</label>
+                        <input type="text" maxlength="30" minlength="5">
+                        <label for=""  >E-mail</label>
+                        <input type="email">
+                        <label for="">Comment</label>
+                        <textarea></textarea>
+                        <input type="submit" value="Submit comment">
+                    </form>
+                </div>
             </div>
         </div>
         <div class='max-width center '>
