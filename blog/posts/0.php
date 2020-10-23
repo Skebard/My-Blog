@@ -18,7 +18,7 @@ require '../../Private/templates/postHeader.php';
 
                 </div>
                 <ul class='categories-tags'>
-                    <li>Javascript</li>
+                    <li class="main-category-tag">Javascript</li>
                     <li>HTML</li>
                     <li>CSS</li>
                 </ul>
@@ -77,52 +77,65 @@ require '../../Private/templates/postHeader.php';
             </div>
         </div>
         <div class='max-width center '>
+            <h2 class='related-title'> Related</h2>
             <ul class="related-posts-wrapper">
                 <li>
                     <img src='https://picsum.photos/250/200?t=2'>
+                    <div class="main-category">PHP</div>
                     <div class="related-post-info">
-                        <div class="main-category">PHP</div>
                         <h4 class="title">Making incredible things with PHP</h4>
+                        <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+
+
                         <div class="author-info">
-                            <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
-                            <div>
+                            <div class="author-info-align">
+                                <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
                                 <h4><span class="author-name">Antonio Jorda</span></h4>
-                                <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
                             </div>
+
                         </div>
 
                     </div>
                 </li>
                 <li>
-                    <img src='https://picsum.photos/250/200?t=5'>
+                    <img src='https://picsum.photos/250/200?t=2'>
+                    <div class="main-category">CSS</div>
                     <div class="related-post-info">
-                        <div class="main-category">CSS</div>
                         <h4 class="title">Breathtaking effects with CSS</h4>
+                        <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+
+
                         <div class="author-info">
-                            <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
-                            <div>
+                            <div class="author-info-align">
+                                <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
                                 <h4><span class="author-name">Antonio Jorda</span></h4>
-                                <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
                             </div>
+
                         </div>
 
                     </div>
                 </li>
                 <li>
-                    <img src='https://picsum.photos/250/200?t=4'>
+                    <img src='https://picsum.photos/250/200?t=2'>
+                    <div class="main-category">javascript</div>
                     <div class="related-post-info">
-                        <div class="main-category">Javascript</div>
                         <h4 class="title">Starting with ES6</h4>
+                        <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
+
+
                         <div class="author-info">
-                            <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
-                            <div>
+                            <div class="author-info-align">
+                                <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
                                 <h4><span class="author-name">Antonio Jorda</span></h4>
-                                <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
                             </div>
+
                         </div>
 
                     </div>
                 </li>
+
+
+
             </ul>
         </div>
 
