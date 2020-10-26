@@ -103,7 +103,7 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid #e9ebee;
     transition: opacity 2s;
-    opacity: 0;
+    opacity: 1;
 }
 
 .comments>li.fade-in {
@@ -193,6 +193,37 @@
     padding:1rem;
     margin-top:1rem;
 }
+
+
+.modal-comment-sent{
+    position:fixed;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100%;
+    width:100%;
+    z-index:1000;
+}
+.modal-comment-sent.hidden{
+    display:none;
+}
+.modal-comment-sent > .modal-background{
+    width:100%;
+    height:100%;
+    background-color:black;
+    position:absolute;
+    left:0;
+    bottom:0;
+    opacity:0.6;
+}
+.modal-comment-sent >.message{
+    z-index:10;
+    padding:2rem;
+    border-radius:1rem;
+    background-color:white;
+
+}
+
 
 
 /*** end comments ***/

@@ -75,17 +75,18 @@ require '../../Private/templates/postHeader.php';
 
                 </ul>
                 <div class="add-comment-wrapper">
-                    <form class="add-comment-form" >
+                    <form id="add-comment-form-id" class="add-comment-form" >
                         <legend>Add your comment</legend>
                         <label for="" >Your name</label>
-                        <input type="text" maxlength="30" minlength="5">
+                        <input type="text" maxlength="30" minlength="5" name="name" required>
                         <label for=""  >E-mail</label>
-                        <input type="email">
+                        <input type="email"  name="email" required>
                         <label for="">Comment</label>
-                        <textarea></textarea>
+                        <textarea name="comment-content" required></textarea>
                         <input type="submit" value="Submit comment">
                     </form>
                 </div>
+               
             </div>
         </div>
         <div class='max-width center '>
@@ -153,6 +154,15 @@ require '../../Private/templates/postHeader.php';
 
     </div>
 </main>
+<div id="modal-comment-sent-id" class='modal-comment-sent hidden'>
+                    <div class="modal-background">
+                    </div>
+                    <h2 class="message">
+                        Thanks for your comment.<br>
+                        It will be  revised and published within 48 hours.
+                    </h2>
+
+                </div>
 
 <?php
 require '../../Private/templates/footer.php';

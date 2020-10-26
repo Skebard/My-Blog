@@ -12,6 +12,35 @@
 .title-content:focus{
     border-color:blue;
 }
+
+/*** CATEGORY TAGS ***/
+.category-wrapper{
+    display:flex;
+    align-items:center;
+    margin-bottom:1rem;
+}
+.btn-add-category{
+    padding:0.7rem;
+    border:none;
+    cursor:pointer;
+    border-radius:0.3rem;
+    margin:0 1rem;
+}
+.category-tags{
+    display:flex;
+}
+.category-tags > li{
+    cursor: pointer;
+    background-color: rgb(255, 191, 104);
+    padding: 0.6rem;
+    width:fit-content;
+}
+.category-tags > li:not(:last-child){
+    margin-right:1rem;
+}
+/*** end category tags ***/
+
+/*** CONTENT OPTIONS ***/
 .content-options{
     display:flex;
     justify-content:flex-start;
@@ -19,6 +48,8 @@
 .content-options > li:not(:last-child){
     margin-right:1rem;
 }
+
+/*** end content options ***/
 .post-wrapper{
     margin-top:2rem;
     flex-grow:1;

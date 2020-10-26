@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="../../Public/css/main.css">
     <link rel="stylesheet" href="../../Public/css/post.css">
 
-    <script defer src='../../public/js/header.js'></script>
+    <script defer src='../../Public/js/header.js'></script>
+    <script defer src='../../Public/js/post/handleComments.js'></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- google Fonts roboto-->

@@ -13,6 +13,14 @@ body{
     justify-content: space-between;
 }
 
+/*** UTILS ***/
+.hidden{
+    display:none;
+}
+.fas.hidden{
+    display:none;
+}
+
 /** HEADER **/
 
 
