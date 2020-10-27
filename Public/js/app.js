@@ -1,4 +1,85 @@
+//*** DATA ***/
+let availableContentTypes = ['subtitle','text','image','code'];
+let availableModificators = ['link','bold','cursive'];
+
+let boxes = [];
+
+//*** HTML elements ****/
 let postContent = document.getElementById("post-wrapper");
+let contentOptionsWrapper = document.getElementById('content-options-id');
+
+availableContentTypes.forEach(conType=>{
+    let li = document.createElement('li');
+    li.textContent = conType;
+    contentOptionsWrapper.appendChild(li);
+    li.addEventListener('click',e=>{
+        let box = new Box(conType);
+    });
+})
+
+
+
+//set tags for styles ( italics, bold, link)
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+
+function setTagToSelectedText(){
+    let text = window.getSelection();
+    //check if there is nothing selected
+    if(text.toString()==""){
+        return false;
+    }
+
+    //check that a the selected text is in a box
+    let parentNode = text.anchorNode.parentNode;
+    if(!parentNode.classList.contains('box-content')){
+        return false;
+    }
+
+    //BE CAREFULL
+    //if we select from left to right with the mause then the start of the selected text will be
+    // extentOffset and the end offset
+
+    let offset = text.anchorOffset;
+    let extentOffset = text.extentOffset;
+    //check if the user has made the selection from right to left
+    if(offset>extentOffset){
+        console.log("left");
+        offset = text.extentOffset;
+        extentOffset = text.anchorOffset;
+    }
+
+
+    let fullText = parentNode.textContent;
+    console.log('off: '+offset + 'ex: '+extentOffset);
+    let selectedText = fullText.slice(offset,extentOffset);
+    let prevText = fullText.slice(0,offset);
+    let nextText = fullText.slice(extentOffset);
+    console.log(selectedText);
+    console.log(prevText);
+    console.log(nextText);
+    
+    //the previous element in the header-box
+    let tag = parentNode.previousSibling.querySelector(".right-container span.content-type").textContent;
+    console.log(tag);
+    switch(tag){
+        case 'bold':
+            break;
+        case 'cursive':
+            break;
+        case 'link':
+            break;
+        default:
+    }
+}
+
 
 
 
