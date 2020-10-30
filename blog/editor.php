@@ -2,9 +2,9 @@
 <html lang='en'>
     <head>
         <title>My blog</title>
-        <link rel='stylesheet' href="Public/css/main2.css">
-        <link rel="stylesheet" href="Public/css/editor.css">
-        <script defer type="module" src="Public/js/editor/app.js"></script>
+        <link rel='stylesheet' href="../Public/css/main2.css">
+        <link rel="stylesheet" href="../Public/css/editor.css">
+        <script defer type="module" src="../Public/js/editor/app.js"></script>
         <!--Font awesome-->
         <script  src="https://kit.fontawesome.com/9547750bbd.js" crossorigin="anonymous"></script>
     </head>
@@ -38,7 +38,7 @@
                 </ul>
             </div>
             <div id="post-wrapper" class="post-wrapper">
-                <div class="box">
+                <!-- <div class="box">
                     <div class="box-header">
                         <span class="arrows"> 
                             <i class="fas fa-sort-up"></i>
@@ -55,7 +55,7 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
 
 
