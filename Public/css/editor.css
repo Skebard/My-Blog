@@ -63,6 +63,9 @@ html .hidden {
     padding: 0.6rem;
     width: fit-content;
 }
+.category-tags>li.main {
+    font-weight:900;
+}
 
 .category-tags>li:not(:last-child) {
     margin-right: 1rem;
@@ -192,6 +195,8 @@ html .hidden {
     font-size: 0.8rem;
     color: rgba(0, 0, 0, 0.38);
     margin-right: 0.2rem;
+    padding:0.5rem;
+    border-radius:0.5rem;
 }
 
 .box-content {

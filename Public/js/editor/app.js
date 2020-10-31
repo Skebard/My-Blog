@@ -1,9 +1,10 @@
 //*** IMPORT MODULES */
 import Box from './modules/box.js';
 import ModificatorsHandler from './modules/modificatorHandler.js';
+import TagsHandler from './modules/tagsHandler.js';
 
 //*** DATA ***/
-let availableContentTypes = ['subtitle', 'text', 'image', 'code'];
+let availableContentTypes = ['subtitle','subtitle2', 'text', 'image', 'code'];
 let availableModificators = ['link', 'bold', 'cursive'];
 let availableModificators2 = [{
     name:'link',
@@ -18,6 +19,9 @@ let availableModificators2 = [{
     tag:'i',
     style:''
 }];
+let categoryTags = ['CSS','Javascript',"PHP",'JQuery','bootstrap','MySql','HTTP','Random'];
+let selectedTagsContainer = document.getElementById("category-tags-id");
+let selectTagBtn = document.getElementById('btn-add-tag-id');
 
 let boxes = [];
 
@@ -25,12 +29,14 @@ let boxes = [];
 let postContent = document.getElementById("post-wrapper");
 let contentOptionsWrapper = document.getElementById('content-options-id');
 
-
-Box.prototype.container = postContent;
-
+Box.initialize(postContent,availableContentTypes);
 
 
+let tagHandler =new TagsHandler(categoryTags,selectedTagsContainer,selectTagBtn);
 //*** EVENT LISTENERS ***//
+
+
+
 
 //Create selectable tags and add event listeners to add boxes
 availableContentTypes.forEach(conType => {

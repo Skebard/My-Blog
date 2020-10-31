@@ -19,10 +19,10 @@
             </div>
             <div class="category-wrapper">
                 <h3>Tags: </h3>
-                <button class="btn-add-category">+</button>
-                <ul class="category-tags">
-                    <li>CSS</li>
-                    <li>HTML</li>
+                <button class="btn-add-category" id="btn-add-tag-id">+</button>
+                <ul class="category-tags" id='category-tags-id'>
+                    <!-- <li>CSS</li>
+                    <li>HTML</li> -->
                 </ul>
 
             </div>

@@ -3,9 +3,20 @@ export default class Box {
     sayhi(){
         console.log('hi');
     }
-    static initialize(container){
+    static initialize(container,contentTypes){
         Box.prototype.total =0;
         Box.prototype.container = container;
+        Box.prototype.colors = ['greenyellow','lightblue','palevioletred','lightgoldenrodyellow','lightsalmon','lightpink','mediumpurple'];
+        Box.prototype.types = contentTypes;
+        //add colors to the box type
+        var style = document.createElement('style');
+        var css = "";
+        Box.prototype.types.forEach((type,index)=>{
+            css += '   .type-'+type+'{background-color:'+ Box.prototype.colors[index] +';}';
+            console.log(Box.prototype.colors[index]);
+        })
+        style.appendChild(document.createTextNode(css));
+        document.getElementsByTagName('head')[0].appendChild(style);
     }
     createHTMLbox() {
         let box = document.createElement('div');
@@ -45,6 +56,7 @@ export default class Box {
         rightContainer.classList.add('right-container');
         let type = document.createElement('span');
         type.classList.add('content-type');
+        type.classList.add("type-"+this.type);
         type.textContent = this.type;
         let trash = document.createElement('i');
         trash.className = "fas fa-trash-alt";
@@ -135,7 +147,7 @@ export default class Box {
 
     delete() {
         this.updatePos();
-        if (this.pos === this.getLastSibling()) {
+        if (this.pos === this.getLastSibling() && this.pos!== 0) {
             this.getSibling(this.pos - 1).querySelector('.fa-sort-down').classList.add('hidden');
         }
         if (this.pos === 0) {
