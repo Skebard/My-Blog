@@ -20,6 +20,15 @@ export default class TagsHandler {
                     mainTag.classList.remove('main');
                 }
                 e.target.classList.add('main');
+                //remove tags
+            }else if(e.target.classList.contains('remove-btn')){
+                //get tag category
+                let removedTag = e.target.previousSibling.textContent;
+                e.target.parentElement.remove();
+                this.selectedTags = this.selectedTags.filter(tag=>{
+                    return tag !== removedTag;
+                });
+                console.log(this.selectedTags);
             }
         });
         //display available tags
@@ -40,11 +49,15 @@ export default class TagsHandler {
     }
     addSelectedHTMLtag(tagName) {
         let li = document.createElement('li');
+        let removeBtn = document.createElement('span');
+        removeBtn.textContent = 'X';
+        removeBtn.classList.add('remove-btn');
         li.textContent = tagName;
         console.log(this.selectedTags);
         if(this.selectedTags.length==1){
             li.classList.add('main');
         }
+        li.appendChild(removeBtn);
         this.container.append(li);
     }
     displayAvailableTags() {
@@ -57,7 +70,7 @@ export default class TagsHandler {
             li.textContent = tag;
             li.style = 'padding:0.5rem;font-size:1.2rem; cursor:pointer;';
             this.availableTagsContainer.append(li);
-        })
+        });
 
         this.modalSelectTags.style.display = 'flex';
         //create modal
@@ -102,9 +115,6 @@ export default class TagsHandler {
         document.querySelector('body').appendChild(modalContainer);
         this.modalSelectTags = modalContainer;
         this.availableTagsContainer = optionsContainer;
-
-    }
-    addTag() {
 
     }
     removeTag() {

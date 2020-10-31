@@ -62,6 +62,7 @@ html .hidden {
     background-color: rgb(255, 191, 104);
     padding: 0.6rem;
     width: fit-content;
+    position:relative;
 }
 .category-tags>li.main {
     font-weight:900;
@@ -70,6 +71,20 @@ html .hidden {
 .category-tags>li:not(:last-child) {
     margin-right: 1rem;
 }
+
+.category-tags>li:hover .remove-btn{
+    display:block;
+}
+.remove-btn{
+    position:absolute;
+    top:0;
+    right:0;
+    padding:0.2rem;
+    display:none;
+    background-color: white;
+}
+
+
 
 /*** end category tags ***/
 
