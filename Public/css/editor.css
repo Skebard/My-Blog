@@ -37,6 +37,11 @@ html .hidden {
     display: none;
 }
 
+.menu-wrapper{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap:wrap-reverse;
+}
 
 /*** CATEGORY TAGS ***/
 .category-wrapper {
@@ -94,8 +99,18 @@ html .hidden {
     justify-content: flex-start;
 }
 
-.content-options>li:not(:last-child) {
-    margin-right: 1rem;
+.content-options>li{
+    cursor:pointer;
+    padding:0.5rem;
+    text-transform: capitalize;
+}
+.content-options>li:hover{
+    background-color:rgb(239, 239, 239);
+}
+
+.save-cancel-publish-wrapper>button{
+    padding:0.5rem;
+    font-size:1.2rem;
 }
 
 /*** end content options ***/

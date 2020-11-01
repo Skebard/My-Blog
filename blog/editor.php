@@ -26,7 +26,7 @@
                 </ul>
 
             </div>
-            <div >
+            <div  class='menu-wrapper'>
                 <ul id='content-options-id' class="content-options">
                     <!-- <li>Subtitle</li>
                     <li>Text content</li>
@@ -36,6 +36,11 @@
                     <li>Image</li>
                     <li>code</li> -->
                 </ul>
+                <div class="save-cancel-publish-wrapper">
+                    <button class='my-btn btn-cancel'>Cancel</button>
+                    <button class='my-btn btn-save'>Save</button>
+                    <button class='my-btn btn-publish'>Publish</button>
+                </div>
             </div>
             <div id="post-wrapper" class="post-wrapper">
                 <!-- <div class="box">

@@ -29,6 +29,14 @@ let boxes = [];
 let postContent = document.getElementById("post-wrapper");
 let contentOptionsWrapper = document.getElementById('content-options-id');
 
+//get
+
+
+
+
+
+
+
 Box.initialize(postContent,availableContentTypes);
 
 
