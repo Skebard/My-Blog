@@ -23,11 +23,25 @@ $posts = 'CREATE TABLE posts(
         ON DELETE CASCADE
     )';
 
+$comments = 'CREATE TABLE comments(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    content TEXT NOT NULL,
+    postId INT(6) UNSIGNED NOT NULL,
+    CONSTRAINT fk_post_id
+        FOREIGN KEY (postId)
+        REFERENCES posts (id)
+        ON DELETE CASCADE
+    )';
 $authors = 'CREATE TABLE authors(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(40) NOT NULL,
+    password VARCHAR(1000) NOT NULL,
     firstName VARCHAR(30) NOT NULL,
     lastName1 VARCHAR(30) NOT NULL,
     lastName2 VARCHAR(30) NOT NULL,
+    birthdate DATETIME,
     profileImage VARCHAR(3000),
     email VARCHAR (150)
     )';
