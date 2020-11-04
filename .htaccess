@@ -1,0 +1,5 @@
+
+#
+
+
+ErrorDocument 404 /projects/MyBlog/error404.php

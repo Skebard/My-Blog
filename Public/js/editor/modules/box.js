@@ -1,14 +1,39 @@
 
+/**Class  representing a box (editable area)
+ * Important: before instantiating any object the static method initialize must be called
+*/
 export default class Box {
     sayhi(){
         console.log('hi');
     }
+    /**
+     * Creates a box
+     * @param {string} contentType - The type of the box
+     */
+    constructor(contentType) {
+        this.type = contentType;
+        Box.prototype.total++;  // {int} - Total number of instantiated boxes
+        this.box = this.createHTMLbox();
+        Box.prototype.container.append(this.box);   //append the new HTMLElement to the main container
+        this.updatePos();
+        if(this.pos>0){
+            this.updatePrevSibling();
+        }
+
+    }
+    /**
+     * Initializes the Box class so the instantiated objects will behave as expected.fa-sort-up
+     * This method MUST be called before instantiate any object.
+     * @param {HTMLElement} container - Main container where the boxes will be appended
+     * @param {string[]} contentTypes - Array of types/tags that will be available
+     */
     static initialize(container,contentTypes){
         Box.prototype.total =0;
         Box.prototype.container = container;
+        //background colors for the tags
         Box.prototype.colors = ['greenyellow','lightblue','palevioletred','lightgoldenrodyellow','lightsalmon','lightpink','mediumpurple'];
         Box.prototype.types = contentTypes;
-        //add colors to the box type
+        //create styles for each type
         var style = document.createElement('style');
         var css = "";
         Box.prototype.types.forEach((type,index)=>{
@@ -18,6 +43,10 @@ export default class Box {
         style.appendChild(document.createTextNode(css));
         document.getElementsByTagName('head')[0].appendChild(style);
     }
+    /**
+     * Creates the HTMLElement of the box and returns it
+     * @returns {HTMLElement} Box element
+     */
     createHTMLbox() {
         let box = document.createElement('div');
         box.classList.add("box");
@@ -32,8 +61,8 @@ export default class Box {
         arrowDown.className = " fas fa-sort-down";
         arrowDown.classList.add("hidden");
         arrows.append(arrowUp, arrowDown);
+        //Arrows event listeners
         arrowUp.addEventListener('click', () => {
-
             this.moveUp();
             if ((this.pos) <= 0) {
                 console.log("add");
@@ -42,9 +71,8 @@ export default class Box {
             arrowDown.classList.remove('hidden');
         });
         arrowDown.addEventListener('click', () => {
-
             this.moveDown();
-            if ((this.pos) >= this.getLastSibling()) {
+            if ((this.pos) >= this.getLastSiblingPos()) {
                 console.log(this.pos);
                 console.log("add");
                 arrowDown.classList.add('hidden');
@@ -69,30 +97,33 @@ export default class Box {
         box.append(boxHeader, boxContent);
         return box;
     }
-    constructor(contentType) {
-        this.type = contentType;
-        Box.prototype.total++;
-        this.box = this.createHTMLbox();
-        Box.prototype.container.append(this.box);
-        this.updatePos();
-        if(this.pos>0){
-            console.log(this.pos);
-            this.updatePrevSibling();
-        }
 
-    }
-
+    /**
+     * Updates the position of the HTMLElement
+     * @returns {int} Position of the HTMLElement
+     */
     updatePos() {
         let pos = Array.from(Box.prototype.container.children).indexOf(this.box);
         this.pos = pos;
         return pos;
     }
+    /**
+     * Returns the box at the indicated position
+     * @param {int} pos - Position of the desired box
+     * @returns {HTMLElement} Box
+     */
     getSibling(pos) {
         return Box.prototype.container.children[pos];
     }
-    getLastSibling() {
+    /**
+     * Returns the position of the last box. All the boxes are siblings.
+     */
+    getLastSiblingPos() {
         return Box.prototype.container.children.length - 1;
     }
+    /**
+     * Update the visibility of the previous sibling arrows
+     */
     updatePrevSibling() {
         if ((this.pos - 1) > 0) {
             this.getSibling(this.pos - 1).querySelector('.fa-sort-up').classList.remove('hidden');
@@ -101,11 +132,14 @@ export default class Box {
         }
         this.getSibling(this.pos - 1).querySelector('.fa-sort-down').classList.remove('hidden');
     }
+    /**
+     * Update the visibility of the next sibling arrows
+     */
     updateNextSibling() {
-        if (this.pos + 1 > this.getLastSibling()) {
+        if (this.pos + 1 > this.getLastSiblingPos()) {
             return false;
         }
-        if ((this.pos + 1) < this.getLastSibling()) {
+        if ((this.pos + 1) < this.getLastSiblingPos()) {
             this.getSibling(this.pos + 1).querySelector('.fa-sort-down').classList.remove('hidden');
         } else {
             this.getSibling(this.pos + 1).querySelector('.fa-sort-down').classList.add('hidden');
@@ -115,11 +149,15 @@ export default class Box {
         this.getSibling(this.pos + 1).querySelector('.fa-sort-up').classList.remove('hidden');
 
     }
+
+    /**
+     * Moves the HTMLElement below the next box
+     */
     moveDown() {
         this.updatePos();
 
         let nextPos = this.pos + 1;
-        if (nextPos > this.getLastSibling()) {
+        if (nextPos > this.getLastSiblingPos()) {
             return false;
         }
         let nextSibling = this.getSibling(nextPos);
@@ -130,6 +168,9 @@ export default class Box {
         this.updatePrevSibling();
     }
 
+    /**
+     * Moves the HTMLElement above the previous box
+     */
     moveUp() {
         this.updatePos();
 
@@ -145,9 +186,12 @@ export default class Box {
         this.updateNextSibling();
     }
 
+    /**
+     * Deletes the HTMLElement
+     */
     delete() {
         this.updatePos();
-        if (this.pos === this.getLastSibling() && this.pos!== 0) {
+        if (this.pos === this.getLastSiblingPos() && this.pos!== 0) {
             this.getSibling(this.pos - 1).querySelector('.fa-sort-down').classList.add('hidden');
         }
         if (this.pos === 0) {

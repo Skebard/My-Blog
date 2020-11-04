@@ -27,6 +27,7 @@ class Dbh
             //with different keys. One key will be the assigned by the user and another one
             //will be a numeric key assigned by the program.
             //example (without fetch_assoc): you expect ['username'=>'toni','email'=>'toni@gmail.com] but will receive ['username'=>'toni',0=>'toni','email'=>'toni@gmail.com,1=>'toni@gmail.com'] 
+            echo "good operation";
             return $pdo;
         } catch (PDOException $e) {
             //1049 is the code for unknown database  list of codes in: https://mariadb.com/kb/en/mariadb-error-codes/

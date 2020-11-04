@@ -4,6 +4,7 @@ $htmlElements = 'CREATE TABLE htmlElements(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     type VARCHAR(100) NOT NULL,
     content TEXT NOT NULL,
+    position INT(6) NOT NULL,
     postId INT(6) UNSIGNED NOT NULL,
     CONSTRAINT fk_ph_post_id
         FOREIGN KEY (postId)
@@ -43,7 +44,9 @@ $authors = 'CREATE TABLE authors(
     lastName2 VARCHAR(30) NOT NULL,
     birthdate DATETIME,
     profileImage VARCHAR(3000),
-    email VARCHAR (150)
+    email VARCHAR (150),
+    UNIQUE (username),
+    UNIQUE (email)
     )';
 
 
@@ -84,6 +87,9 @@ VALUES ('text','This blog is still under development',1);
 INSERT INTO htmlElements ( type, content, postId)
 VALUES ('subtitle','My subtitle',1);
 
+
+INSERT INTO comments (username,email,content,postId)
+VALUES ('Lara','lara@gmail.com','Please keep posting',1);
 
 
 */
