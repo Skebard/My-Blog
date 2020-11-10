@@ -21,5 +21,20 @@ export default class ActionsHandler{
     cancel(){
 
     }
+    async action(action,title,authorUsername,contents){
+        let formData = new FormData;
+        formData.append('action',action)
+        formData.append('title',title);
+        formData.append('author-username',authorUsername);
+        formData.append('contents',JSON.stringify(contents));
+        let data = await fetch('../Private/posts.php',{
+            method: 'post',
+            body: formData
+        }).then(resp=>resp.text());
+        console.log(data);
+
+
+
+    }
 
 }

@@ -4,7 +4,6 @@ require '../../Private/templates/postHeader.php';
 <main>
     <div class="single-post active">
         <div class="poster-post">
-
         </div>
         <div class="post-content max-width">
             <h1 class="post-title">POST asdfasdf asfda asdf asdfa asdfas title</h1>
@@ -15,7 +14,6 @@ require '../../Private/templates/postHeader.php';
                         <h4><span class="author-name">Antonio Jorda</span></h4>
                         <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
                     </div>
-
                 </div>
                 <ul class='categories-tags'>
                     <li class="main-category-tag">Javascript</li>
@@ -23,8 +21,6 @@ require '../../Private/templates/postHeader.php';
                     <li>CSS</li>
                 </ul>
             </div>
-
-
             <p class="text-content">
                 tur urna. Mauris sit amet neque eget ligula facilisis convallis. Integer facilisis dui erat, vitae
                 rhoncus ipsum mollis nec. Nunc dapibus eleifend enim ac faucibus. Aenean vestibulum libero nec lorem
@@ -41,6 +37,21 @@ require '../../Private/templates/postHeader.php';
                 placerat mi eleifend efficitur. Aliquam er
             </p>
             <h2 class="subtitle">My Subtitle</h2>
+            <pre tabindex="0" contenteditable="true"><code class="javascript">
+
+                let a = "Hello worlds Hello worlds Hello worlds Hello worlds Hello worlds";
+                console.log(a);
+                // priviet
+                public function appendContent($contents){
+                }
+                public function appendRelated(){
+                    fwrite($this->postFile,$this->requireStmt(self::RELATED_POSTS_PATH));
+                }
+                public function appendFooter(){
+                    fwrite($this->postFile,$this->requireStmt(self::POST_FOOTER_PATH));
+                }
+
+            </code></pre>
             <div class="comments-container">
                 <h2 class="comments-title">Comments <button class="btn-comments show">show</button></h2>
                 <ul class="comments">
@@ -72,21 +83,20 @@ require '../../Private/templates/postHeader.php';
                             consectetur bibendum.</p>
                         <small class="comment-email">email@gmail.com</small>
                     </li>
-
                 </ul>
                 <div class="add-comment-wrapper">
-                    <form id="add-comment-form-id" class="add-comment-form" >
+                    <form id="add-comment-form-id" class="add-comment-form">
                         <legend>Add your comment</legend>
-                        <label for="" >Your name</label>
+                        <label for="">Your name</label>
                         <input type="text" maxlength="30" minlength="5" name="name" required>
-                        <label for=""  >E-mail</label>
-                        <input type="email"  name="email" required>
+                        <label for="">E-mail</label>
+                        <input type="email" name="email" required>
                         <label for="">Comment</label>
                         <textarea name="comment-content" required></textarea>
                         <input type="submit" value="Submit comment">
                     </form>
                 </div>
-               
+
             </div>
         </div>
         <div class='max-width center '>
@@ -155,14 +165,14 @@ require '../../Private/templates/postHeader.php';
     </div>
 </main>
 <div id="modal-comment-sent-id" class='modal-comment-sent hidden'>
-                    <div class="modal-background">
-                    </div>
-                    <h2 class="message">
-                        Thanks for your comment.<br>
-                        It will be  revised and published within 48 hours.
-                    </h2>
+    <div class="modal-background">
+    </div>
+    <h2 class="message">
+        Thanks for your comment.<br>
+        It will be revised and published within 48 hours.
+    </h2>
 
-                </div>
+</div>
 
 <?php
 require '../../Private/templates/footer.php';

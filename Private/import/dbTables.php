@@ -6,6 +6,7 @@ $htmlElements = 'CREATE TABLE htmlElements(
     content TEXT NOT NULL,
     position INT(6) NOT NULL,
     postId INT(6) UNSIGNED NOT NULL,
+    UNIQUE(position,postId),
     CONSTRAINT fk_ph_post_id
         FOREIGN KEY (postId)
         REFERENCES posts (id)
@@ -14,15 +15,43 @@ $htmlElements = 'CREATE TABLE htmlElements(
 
 $posts = 'CREATE TABLE posts(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    mainImage VARCHAR(1000),
+    description VARCHAR (1000),
+    published BOOLEAN DEFAULT FALSE,
     creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     publishingDate DATETIME,
     lastModificationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     authorId INT(6) UNSIGNED NOT NULL,
-    CONSTRAINT fk_ph_author_id
+    mainCategory INT(6) UNSIGNED NOT NULL,
+    UNIQUE(title),
         FOREIGN KEY (authorId)
         REFERENCES authors (id)
+        ON DELETE CASCADE,
+        FOREIGN KEY (mainCategory)
+        REFERENCES categories (id)
         ON DELETE CASCADE
     )';
+
+$categories = 'CREATE TABLE categories(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(40) NOT NULL UNIQUE
+    )';
+
+$postCategories = 'CREATE TABLE postCategories (
+    id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    postId INT(6) UNSIGNED NOT NULL,
+    categoryId INT(6) UNSIGNED NOT NULL,
+    UNIQUE(postId,categoryId),
+        FOREIGN KEY (postId)
+        REFERENCES posts (id)
+        ON DELETE CASCADE,
+        FOREIGN KEY (categoryId)
+        REFERENCES categories (id)
+        ON DELETE CASCADE
+
+)';
+
 
 $comments = 'CREATE TABLE comments(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -62,20 +91,20 @@ INSERT INTO authors ( firstName, lastName1, lastName2)
 VALUES ('Cati','Calafell','Quetglas');
 
 
-INSERT INTO posts ( authorId)
-VALUES (1);
-INSERT INTO posts ( authorId)
-VALUES (1);
-INSERT INTO posts ( authorId)
-VALUES (1);
-INSERT INTO posts ( authorId)
-VALUES (1);
-INSERT INTO posts ( authorId)
-VALUES (2);
-INSERT INTO posts ( authorId)
-VALUES (3);
-INSERT INTO posts ( authorId)
-VALUES (3);
+INSERT INTO posts ( authorId,title)
+VALUES (1,'Getting started with PHP');
+INSERT INTO posts ( authorId,title)
+VALUES (1, 'Using composer');
+INSERT INTO posts ( authorId,title)
+VALUES (1, 'OOP javascript');
+INSERT INTO posts ( authorId,title)
+VALUES (1, 'Laravel');
+INSERT INTO posts ( authorId,title)
+VALUES (2, 'Unit testing');
+INSERT INTO posts ( authorId,title)
+VALUES (3, 'OOP PHP');
+INSERT INTO posts ( authorId,title)
+VALUES (3, 'Python');
 
 
 INSERT INTO htmlElements ( type, content, postId)

@@ -7,6 +7,7 @@ if ( isset($_GET['categories'])){
     exit();
 }
 
+
 $response = new stdClass;
 $limit = $_GET['limit']?? 'undefined';
 $offset = $_GET['offset']?? 'undefined';

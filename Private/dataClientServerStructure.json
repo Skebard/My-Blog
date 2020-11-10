@@ -1,0 +1,24 @@
+{
+    "postId":1,
+    "authorInfo":{
+
+    },
+    "content": [
+        {
+            "pos": 0,
+            "content": "somehting"
+        }
+    ],
+    "postInfo":{
+        "title": "my title",
+    },
+    "comments":[
+        {
+
+        },
+        {
+
+        }
+    ]
+
+}

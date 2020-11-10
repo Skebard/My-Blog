@@ -2,24 +2,51 @@
 import Box from './modules/box.js';
 import ModificatorsHandler from './modules/modificatorHandler.js';
 import TagsHandler from './modules/tagsHandler.js';
+import ActionsHandler from './modules/ActionsHandler.js';
+
+
+//** TEST **/
+let ah = new ActionsHandler;
+let content1 = {
+    'type': 'text',
+    'content': 'to start with this project you should',
+    'position': '1'
+};
+let content2 = {
+    'type': 'subtitle',
+    'content': 'Example',
+    'position': '2'
+};
+let content3 = {
+    'type': 'code',
+    'content': 'some amazing JS',
+    'position': '3'
+};
+let contents = [content1,content2,content3];
+
+ah.action('create', 'hello is the latest published post', 'Skebard', contents);
+
+
+
+
 
 //*** DATA ***/
-let availableContentTypes = ['subtitle','subtitle2', 'text', 'image', 'code'];
+let availableContentTypes = ['subtitle', 'subtitle2', 'text', 'image', 'code'];
 let availableModificators = ['link', 'bold', 'cursive'];
 let availableModificators2 = [{
-    name:'link',
-    tag:'a',
-    style:''
+    name: 'link',
+    tag: 'a',
+    style: ''
 }, {
-    name:'bold',
-    tag:'b',
-    style:''
-},{
-    name:'cursive',
-    tag:'i',
-    style:''
+    name: 'bold',
+    tag: 'b',
+    style: ''
+}, {
+    name: 'cursive',
+    tag: 'i',
+    style: ''
 }];
-let categoryTags = ['CSS','Javascript',"PHP",'JQuery','bootstrap','MySql','HTTP','Random'];
+let categoryTags = ['CSS', 'Javascript', "PHP", 'JQuery', 'bootstrap', 'MySql', 'HTTP', 'Random'];
 let selectedTagsContainer = document.getElementById("category-tags-id");
 let selectTagBtn = document.getElementById('btn-add-tag-id');
 
@@ -37,10 +64,10 @@ let contentOptionsWrapper = document.getElementById('content-options-id');
 
 
 
-Box.initialize(postContent,availableContentTypes);
+Box.initialize(postContent, availableContentTypes);
 
 
-let tagHandler =new TagsHandler(categoryTags,selectedTagsContainer,selectTagBtn);
+let tagHandler = new TagsHandler(categoryTags, selectedTagsContainer, selectTagBtn);
 //*** EVENT LISTENERS ***//
 
 

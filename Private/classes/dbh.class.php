@@ -27,7 +27,7 @@ class Dbh
             //with different keys. One key will be the assigned by the user and another one
             //will be a numeric key assigned by the program.
             //example (without fetch_assoc): you expect ['username'=>'toni','email'=>'toni@gmail.com] but will receive ['username'=>'toni',0=>'toni','email'=>'toni@gmail.com,1=>'toni@gmail.com'] 
-            echo "good operation";
+
             return $pdo;
         } catch (PDOException $e) {
             //1049 is the code for unknown database  list of codes in: https://mariadb.com/kb/en/mariadb-error-codes/
@@ -66,12 +66,15 @@ class Dbh
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             require '../import/dbTables.php';
+            $pdo->exec($categories);
             $pdo->exec($authors);
             $pdo->exec($posts);
+            $pdo->exec($postCategories);
             $pdo->exec($htmlElements);
             $pdo->exec($comments);
             return $pdo;
         } catch (PDOException $e) {
+            echo $e->getMessage();
             return false;
         }
     }
@@ -83,6 +86,7 @@ class Dbh
             $pdo->exec($initialData);
             return true;
         }catch(PDOException $e){
+            echo $e->getMessage();
             return false;
         }
     }

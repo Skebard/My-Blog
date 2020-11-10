@@ -7,7 +7,7 @@
  */
 //todo CONSTANTS
 const POSTS_PER_PAGE = 5;
-const POSTS_URL = 'posts/';
+const POSTS_URL = 'posts/newData.php';
 
 //todo HTML elemens
 //let loadingHTML = document.getElementById("loading-id");
@@ -49,7 +49,7 @@ class Blog{
         });
     }
     constructor(container,categoriesContainer){
-        this.category = "any";
+        this.category = "All";
         this.categoriesContainer = categoriesContainer;
         this.container = container;
         this.hello = 0;
@@ -66,19 +66,23 @@ class Blog{
         imageWrapper.classList.add("post-image-wrapper");
 
         let imgPost = document.createElement("img");
-        imgPost.src = "https://picsum.photos/650/500?t"+postInfo.id;        //!change for correct image url
+        imgPost.src = postInfo.mainImage;
 
         let authorInfo = document.createElement('div');
         authorInfo.classList.add('author-info');
         let authorPhotoLink = document.createElement("a");
-        authorPhotoLink.setAttribute('href','#');           //!put correct link
+        authorPhotoLink.setAttribute('href','../about/');           //!put correct link
         let authorPhoto = document.createElement('img');
         authorPhoto.classList.add('author-photo');
-        authorPhoto.src = "../Public/images/authorAntonioJorda2.png"; //! correct link
+        if(postInfo.authorInfo.profileImage){
+            authorPhoto.src=postInfo.authorInfo.profileImage;
+        }else{
+            authorPhoto.src = "../Public/images/defaultProfileImage.png";
+        }
         authorPhotoLink.appendChild(authorPhoto);
         let authorName = document.createElement('span');
         authorName.classList.add("author-name");
-        authorName.textContent = "Antonio Jorda"; //! correct name
+        authorName.textContent = postInfo.authorInfo.firstName +" "+postInfo.authorInfo.lastName1;
         authorInfo.append(authorPhotoLink,authorName);
 
         imageWrapper.append(imgPost,authorInfo);
@@ -91,7 +95,7 @@ class Blog{
         postTitle.textContent = postInfo.title;
         let postDate = document.createElement('h5');
         postDate.classList.add('post-date');
-        postDate.textContent = String( new Date());
+        postDate.textContent = postInfo.publishingDate; //! ADD SOME FORMAT
         let postBody = document.createElement("div");
         postBody.classList.add("post-body");
         let postBodyTextWrapper = document.createElement('div');
@@ -139,14 +143,17 @@ class Blog{
             this.categoriesContainer.appendChild(newCategory);
         });
     }
-
+    init(){
+        this.container.innerHTML = '';
+        this.loadMore();
+    }
     async textSearch(){
         //! FINISH
     }
 }
 
 
-function getPosts(offset,category="any"){
+function getPosts(offset,category="All"){
     let url = POSTS_URL +"?offset="+offset+"&limit="+POSTS_PER_PAGE+"&category="+category;
     return fetch(url)
     .then(resp=>resp.json());
@@ -159,6 +166,8 @@ function getCategories(){
 }
 
 let myBlog = new Blog(postsContainer,categoriesContainer);
+myBlog.printCategories();
+myBlog.init();
 
 
 //search by main category

@@ -31,6 +31,7 @@
     background-color: white;
     text-align: center;
     padding-top: 0.4rem;
+    margin-bottom:1rem;
     border-bottom: 2px solid black;
     cursor: default;
 }
@@ -273,7 +274,7 @@
 .related-posts-wrapper > li:not(:last-child){
     margin-bottom:2rem;
 }
-.related-posts-wrapper > li > img{
+.related-posts-wrapper > li  img{
     max-height:250px;
     object-fit:cover;
 }
@@ -293,6 +294,7 @@
     justify-content:flex-end;
 }
 .related-post-info .author-info-align{
+    width:100%;
     display:flex;
     justify-content: flex-start;
     align-items:center;
