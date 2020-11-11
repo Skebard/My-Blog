@@ -34,6 +34,19 @@
     color:white;
 }
 
+.create-post-btn{
+    cursor:pointer;
+    margin-top:2rem;
+    font-size:1.4rem;
+    background-color:#27ae60;
+    border-radius:1rem;
+    padding:1.5rem;
+    transition: all 0.4s;
+}
+.create-post-btn:hover{
+    transform: scale(1.2);
+    
+}
 /*** end sidebar ***/
 /*** LEGEND ***/
 .legend{

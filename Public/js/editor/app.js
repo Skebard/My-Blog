@@ -62,6 +62,8 @@ let title = document.getElementById('title-id');
 let mainImgUrl = document.getElementById('main-image-id');
 
 
+let postId;
+
 //get
 
 //Get category tags
@@ -117,7 +119,7 @@ availableModificators2.forEach(mod => {
 
 
 saveBtn.addEventListener('click',e=>{
-    let mainCategory = tagHandler.mainTag!=undefined?tagHandler.mainTag:false;
+    let mainCategory = tagHandler.mainTag;
     let categories = tagHandler.selectedTags.length>0?tagHandler.selectedTags:false;
     let contents = [];
     // type content
@@ -129,7 +131,7 @@ saveBtn.addEventListener('click',e=>{
         });
     });
     console.log(tagHandler.mainTag);
-    ah.save(title.textContent,mainCategory,categories,contents)
+    ah.save(postId,title.textContent,mainImgUrl.textContent,mainCategory,categories,contents);
 });
 
 
@@ -151,12 +153,12 @@ async function getPost(){
     let data = await resp.json();
 
     //set title 
-    
+    postId = data.postInfo.id;
     title.textContent = data.postInfo.title;
     mainImgUrl.textContent = data.postInfo.mainImage;
     tagHandler.selectedTags.push(data.mainCategory);
     tagHandler.addSelectedHTMLtag(data.mainCategory);
-    tagHandler.mainCategory = data.mainCategory;
+    tagHandler.mainTag = data.mainCategory;
     tagHandler.selectedTags.push(...data.categories);
     data.categories.forEach(category=>{
         tagHandler.addSelectedHTMLtag(category);

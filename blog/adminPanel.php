@@ -27,7 +27,7 @@ require '../Private/classes/panelGenerator.class.php';
                     <li>Styles</li>
                     <li>Settings</li>
                 </ul>
-
+                <div class='create-post-btn'>New post</div>
             </aside>
             <div class='main-content'>
                 <ul class='legend'>

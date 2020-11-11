@@ -1,12 +1,12 @@
 <?php
 $initialData = "INSERT INTO authors (username, password, firstName, lastName1, lastName2,profileImage)
-VALUES ('Skebard','1234','Antonio','Jorda','Aparicio','https://imgur.com/XEbYUnk');
+VALUES ('Skebard','1234','Antonio','Jorda','Aparicio','https://i.imgur.com/XEbYUnk.jpg');
 
 INSERT INTO authors (username,password, firstName, lastName1, lastName2)
-VALUES ('Raopub','1234','Bernat','Jorda','Quetglas');
+VALUES ('Raopub','1234','Jose','Jorda','Quetglas');
 
 INSERT INTO authors (username, password, firstName, lastName1, lastName2)
-VALUES ('LeCat','1234','Cati','Calafell','Quetglas');
+VALUES ('LeCat','1234','Tomeu','Calafell','Quetglas');
 
 
 INSERT INTO categories(name)
@@ -19,6 +19,14 @@ INSERT INTO categories(name)
 VALUES ('NPM');
 INSERT INTO categories(name)
 VALUES ('MySql');
+INSERT INTO categories(name)
+VALUES ('Composer');
+INSERT INTO categories(name)
+VALUES ('All');
+INSERT INTO categories(name)
+VALUES ('Random');
+INSERT INTO categories(name)
+VALUES ('API');
 
 
 INSERT INTO posts ( authorId,title,mainCategory)
@@ -30,11 +38,18 @@ VALUES (1, 'OOP javascript',1);
 INSERT INTO posts ( authorId,title,mainCategory)
 VALUES (1, 'Laravel',3);
 INSERT INTO posts ( authorId,title,mainCategory)
+VALUES (1, 'UnitPHP',5);
+INSERT INTO posts ( authorId,title,mainCategory)
+VALUES (1, 'Basic MySQL queries',5);
+INSERT INTO posts ( authorId,title,mainCategory)
 VALUES (2, 'Unit testing',3);
 INSERT INTO posts ( authorId,title,mainCategory)
 VALUES (3, 'OOP PHP',1);
 INSERT INTO posts ( authorId,title,mainCategory)
-VALUES (3, 'Python',2);
+VALUES (3, 'Javascript libraries',2);
+
+UPDATE posts 
+SET description = 'Maecenas sit amet fermentum justo, eu egestas felis. Aliquam lobortis ut tellus a dictum. Nam rhoncus suscipit arcu, non convallis enim. Vestibulum vestibulum, felis a scelerisque aliquet, ligula magna viverra nisl, sed ullamcorper neque massa eget lectus. Pellentesque eu porttitor ipsum, ac fringilla mauris. Etiam fringilla felis ullamcorper diam pulvinar scelerisque. Suspendisse vel enim eros';
 
 INSERT INTO postCategories (postId,categoryId)
 VALUES (1,2);
@@ -43,9 +58,13 @@ VALUES (1,3);
 INSERT INTO postCategories (postId,categoryId)
 VALUES (2,1);
 INSERT INTO postCategories (postId,categoryId)
-VALUES (2,2);
+VALUES (2,4);
 INSERT INTO postCategories (postId,categoryId)
 VALUES (3,4);
+INSERT INTO postCategories (postId,categoryId)
+VALUES (4,1);
+INSERT INTO postCategories (postId,categoryId)
+VALUES (4,2);
 
 
 INSERT INTO htmlElements ( type, content,position, postId)

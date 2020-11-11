@@ -55,6 +55,7 @@ class Dbh
             $pdo->exec($sql);
             return $pdo;
         } catch (PDOException $e) {
+            echo $e->getMessage();
             return false;
         }
     }

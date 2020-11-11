@@ -20,9 +20,18 @@ class PostGenerator extends Post
 
     public function printTitle()
     {
+        $file = $this->postInfo['mainImage'];
+        $file_headers = @get_headers($file);
+        if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+            $exists = false;
+            $this->postInfo['mainImage'] = "https://picsum.photos/1400/1120?t=1";
+        }
+        else {
+            $exists = true;
+        }
         echo '<main>
         <div class="single-post active">
-            <div class="poster-post">
+            <div class="poster-post" style="background-image:url('.$this->postInfo['mainImage'].');">
             </div>
             <div class="post-content max-width">
                 <h1 class="post-title">' . $this->postInfo['title'] . '</h1>';
@@ -103,6 +112,17 @@ class PostGenerator extends Post
             else {
                 $exists = true;
             }
+
+            $file = $post['mainImage'];
+            $file_headers = @get_headers($file);
+            if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+                $exists = false;
+                $post['mainImage'] = "https://i.imgur.com/YcjzYu0.jpg";
+            }
+            else {
+                $exists = true;
+            }
+
             $mainCategory = Post::getCategoryName($post['mainCategory']);
             $url = "?id=". str_replace(' ','-',$post['title']);
             $html .='  <li>

@@ -67,6 +67,7 @@ class Blog{
         imageWrapper.classList.add("post-image-wrapper");
 
         let imgPost = document.createElement("img");
+        
         imgPost.src = postInfo.mainImage;
         // let mainCategory = document.createElement('div');    //!main category
         // mainCategory.textContent = postInfo
@@ -77,6 +78,7 @@ class Blog{
         authorPhotoLink.setAttribute('href','../about/');           //!put correct link
         let authorPhoto = document.createElement('img');
         authorPhoto.classList.add('author-photo');
+        console.log(postInfo.authorInfo.profileImage);
         if(postInfo.authorInfo.profileImage){
             authorPhoto.src=postInfo.authorInfo.profileImage;
         }else{

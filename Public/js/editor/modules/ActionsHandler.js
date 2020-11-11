@@ -2,13 +2,18 @@ export default class ActionsHandler{
     //this class is in charge for saving, publishing and cancel
 
     //Sent all the data to server and get response
-    save(title,mainCategory,categories,contents){
+    //when sending data we will make the easier approach: remove all the contents and save the new ones
+    save(id,title,mainImage,mainCategory,categories,contents){
         let data = {
+            id:id,
             title:title,
+            description: 'description field is not implemented yet',
+            mainImage: mainImage,
             mainCategory: mainCategory,
             categories: JSON.stringify(categories),
             contents: JSON.stringify(contents)
         }
+        console.log(data);
         this.action('save',data);
     }
 

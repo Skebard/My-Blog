@@ -7,6 +7,7 @@ export default class TagsHandler {
         this.tags = tags;
         this.selectedTags = [];
         this.mainTag = undefined;
+        this.mainCategory = undefined;
         this.selectBtn = selectBtn;
         this.addEventListeners();
     }

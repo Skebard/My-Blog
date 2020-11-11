@@ -156,6 +156,7 @@ class Post extends Dbh
             echo "<h1> executed<h1>";
             $stmt->execute([$title,$authorId,$mainCategory]);
         }catch( PDOException $e){
+            echo $e->getMessage();
             return false;
         }
         return true;
@@ -168,6 +169,29 @@ class Post extends Dbh
         $stmt->execute([$authorId]);
 
         return $stmt->fetchAll();
+    }
+    static public function updatePost($id,$title,$mainImage,$description,$mainCategoryId,$categories,$contents){
+        $sql = "UPDATE posts
+                SET title = ?,mainImage = ?, description = ?,mainCategory =?
+                WHERE id =?";
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$title,$mainImage,$description,$mainCategoryId,$id]);
+
+        $sql = "DELETE FROM postcategories WHERE postId=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        $sql = '';
+        require_once 'category.php';
+        $categoriesId=[];
+        foreach($categories as $cat){
+            $sql .= 'INSERT INTO postcategories(postId,categoryId)
+                    VALUES (?,?);';
+            array_push($categoriesId,$id,Category::getCategoryId($cat));
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($categoriesId);
     }
 
 }

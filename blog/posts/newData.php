@@ -53,6 +53,17 @@ else{
         $newPost = new stdClass;
         $newPost->id = 1;
         $newPost->title = $post['title'];
+
+        $file = $post['mainImage'];
+        $file_headers = @get_headers($file);
+        if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+            $exists = false;
+            $post['mainImage'] = "https://i.imgur.com/YcjzYu0.jpg";
+        }
+        else {
+            $exists = true;
+        }
+
         $newPost->mainImage = $post['mainImage'];
         $newPost->publishingDate = $post['publishingDate'];
         $newPost->body = $post['description'];
