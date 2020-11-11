@@ -17,91 +17,6 @@ class PostGenerator extends Post
     /**
      * Creates a file. The file will have the same name as the title but replacing spaces for dashes( - )
      */
-    public function createFile()
-    {
-        echo 'FILE NAME:   ';
-        echo $this->title;
-        echo " END NAME";
-        $fileName = str_replace(" ", "-", $this->title);
-        $fileName .= '.php';
-        $this->postFile = fopen(self::POSTS_REL_PATH . "/" . $fileName, 'w');
-        fwrite($this->postFile, "<?php\n");
-    }
-    public function appendHeader()
-    {
-        fwrite($this->postFile, $this->requireStmt(self::POST_HEADER_PATH));
-    }
-    public function appendTitle()
-    {
-        $html = '<main>
-        <div class="single-post active">
-            <div class="poster-post">
-    
-            </div>
-            <div class="post-content max-width">
-                <h1 class="post-title">POST asdfasdf asfda asdf asdfa asdfas title</h1>
-                <div class="post-info">
-                    <div class="author-info">
-                        <a href="#"><img class="author-photo" src="../../Public/images/authorAntonioJorda2.png" alt="profile photo"></a>
-                        <div>
-                            <h4><span class="author-name">Antonio Jorda</span></h4>
-                            <h5 class="email">Oct 13, 2020 11:44:14 AM</h5>
-                        </div>
-    
-                    </div>
-                    <ul class="categories-tags">
-                        <li class="main-category-tag">Javascript</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                    </ul>
-                </div>';
-        fwrite($this->postFile, $html);
-    }
-    public function appendContent($contents)
-    {
-    }
-    public function appendRelated()
-    {
-        fwrite($this->postFile, $this->requireStmt(self::RELATED_POSTS_PATH));
-    }
-    public function appendFooter()
-    {
-        fwrite($this->postFile, $this->requireStmt(self::POST_FOOTER_PATH));
-        //add code to trigger the code
-    }
-    public function closeFile()
-    {
-        fclose($this->postFile);
-    }
-    public function requireStmt($path)
-    {
-        return "require '" . $path . "';\n";
-    }
-    public function appendAuthor()
-    {
-    }
-    public function appendCategories()
-    {
-    }
-    public function appendText($text)
-    {
-        $html = "<p class='text-content'>" . $text . "</p>";
-        return $html;
-    }
-    public function appendSubtitle($text)
-    {
-        $html = "<h2 class='subtitle'>" . $text . "</h2>";
-        return $html;
-    }
-    public function appendImage()
-    {
-    }
-    public function appendSubtitle2()
-    {
-    }
-    public function appendCode($lang)
-    {
-    }
 
     public function printTitle()
     {
@@ -179,9 +94,14 @@ class PostGenerator extends Post
         foreach($related as $post){
             $authorInfo = Post::getAuthorInfo($post['authorId']);
             //in case it does not exist we do not want to show a warning that is why we put a @
-            $img = @file_get_contents($authorInfo['profileImage']);
-            if(!$img){
+            $file = $authorInfo['profileImage'];
+            $file_headers = @get_headers($file);
+            if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+                $exists = false;
                 $authorInfo['profileImage'] = "https://i.imgur.com/wIHZKq1.png";
+            }
+            else {
+                $exists = true;
             }
             $mainCategory = Post::getCategoryName($post['mainCategory']);
             $url = "?id=". str_replace(' ','-',$post['title']);
@@ -212,9 +132,6 @@ class PostGenerator extends Post
     public function closeMain()
     {
         echo '</div></main>';
-    }
-    public function printFooter()
-    {
     }
 }
 

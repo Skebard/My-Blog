@@ -13,6 +13,7 @@ const POSTS_URL = 'posts/newData.php';
 //let loadingHTML = document.getElementById("loading-id");
 let postsContainer = document.querySelector("#posts-container-id .posts-page");
 let categoriesContainer = document.querySelector("#posts-overview-id > .categories-tags");
+let loadMoreBtn = document.getElementById('load-more-btn-id');
 //let pagination = document.getElementById("pagination-id");
 //let postsOverview = document.getElementById("posts-overview-id");
 
@@ -67,6 +68,8 @@ class Blog{
 
         let imgPost = document.createElement("img");
         imgPost.src = postInfo.mainImage;
+        // let mainCategory = document.createElement('div');    //!main category
+        // mainCategory.textContent = postInfo
 
         let authorInfo = document.createElement('div');
         authorInfo.classList.add('author-info');
@@ -95,7 +98,7 @@ class Blog{
         postTitle.textContent = postInfo.title;
         let postDate = document.createElement('h5');
         postDate.classList.add('post-date');
-        postDate.textContent = postInfo.publishingDate; //! ADD SOME FORMAT
+        postDate.textContent = postInfo.publishingDate; //! ADD SOME FORMA
         let postBody = document.createElement("div");
         postBody.classList.add("post-body");
         let postBodyTextWrapper = document.createElement('div');
@@ -121,15 +124,21 @@ class Blog{
     }
     //displays more posts
     async loadMore(){
+        if(this.loading){
+            return false;
+        }
+        this.loading = true;
         let response = await getPosts(this.offset,this.category);
         console.log(response);
         response.results.forEach((post)=>{
             this.addPost(post);
         });
         this.offset +=response.results.length;
+        this.loading = false;
     }
     async printCategories(){
         let categories = await getCategories();
+        this.categories = categories;
         this.categoriesContainer.innerHTML = "";
         categories.forEach(category=>{
             let newCategory = document.createElement('li');
@@ -142,9 +151,21 @@ class Blog{
             });
             this.categoriesContainer.appendChild(newCategory);
         });
+        return true;
     }
     init(){
         this.container.innerHTML = '';
+        let data = window.location.href.split('category=');
+        console.log(data[1]);
+
+        if(data.length>1){
+            console.log(this.categories);
+            console.log()
+            if(this.categories.indexOf(data[1])!==-1){
+                console.log(data[0]);
+                this.category = data[1];
+            }
+        }
         this.loadMore();
     }
     async textSearch(){
@@ -164,10 +185,14 @@ function getCategories(){
     return fetch(url)
     .then(resp=>resp.json());
 }
-
-let myBlog = new Blog(postsContainer,categoriesContainer);
-myBlog.printCategories();
-myBlog.init();
+(async function(){
+    let myBlog = new Blog(postsContainer,categoriesContainer);
+    let a = await myBlog.printCategories();
+    myBlog.init();
+    loadMoreBtn.addEventListener('click',e=>{
+        myBlog.loadMore();
+    });
+})();
 
 
 //search by main category

@@ -14,8 +14,12 @@
         </header>
         <main class="max-width">
             <div class = "title-container">
-                <small class="title-tag">Title</small>
-                <h3 contenteditable="true" class="title-content">Introduce your title</h3>
+                <small  class="title-tag">Title</small>
+                <h3 id='title-id' contenteditable="true" class="title-content">Introduce your title</h3>
+            </div>
+            <div class = "title-container">
+                <small  class="title-tag">Main Image</small>
+                <h3 id='main-image-id' contenteditable="true" class="title-content">Introduce your main image</h3>
             </div>
             <div class="category-wrapper">
                 <h3>Tags: </h3>
@@ -37,9 +41,9 @@
                     <li>code</li> -->
                 </ul>
                 <div class="save-cancel-publish-wrapper">
-                    <button class='my-btn btn-cancel'>Cancel</button>
-                    <button class='my-btn btn-save'>Save</button>
-                    <button class='my-btn btn-publish'>Publish</button>
+                    <button id='btn-cancel-id' class='my-btn btn-cancel'>Cancel</button>
+                    <button id='btn-save-id' class='my-btn btn-save'>Save</button>
+                    <button id='btn-publish-id' class='my-btn btn-publish'>Publish</button>
                 </div>
             </div>
             <div id="post-wrapper" class="post-wrapper">

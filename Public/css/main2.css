@@ -20,6 +20,9 @@ body{
 .fas.hidden{
     display:none;
 }
+.fix-width{
+    width:960px;
+}
 
 /** HEADER **/
 

@@ -87,7 +87,7 @@ $_SESSION['step']="I am in step 1";
 
 
         </div>
-        <div class="load-more center">
+        <div class="load-more center" id='load-more-btn-id'>
             <button class="center btn-load-more">load more </button>
             <i class="fas fa-angle-double-down"></i>
         </div>

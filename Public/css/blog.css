@@ -63,6 +63,15 @@
     max-height: 250px;
     cursor: pointer;
 }
+.post-image-wrapper .main-category{
+    position:absolute;
+    z-index:10;
+    top:0;
+    left:0;
+    cursor: pointer;
+    background-color: rgb(255, 191, 104);
+    padding: 0.6rem;
+}
 
 .post-summary .post-title {
     min-width:40%;

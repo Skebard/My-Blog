@@ -5,7 +5,7 @@ class Post extends Dbh
 {
     protected $title;
     protected $conn;
-    protected $postInfo;
+    public $postInfo;
     protected $categories = [];
     protected $author;
     protected $contents;
@@ -68,6 +68,7 @@ class Post extends Dbh
         $sql = 'SELECT * FROM categories WHERE id=' . $this->postInfo['mainCategory'];
         $stmt = $this->conn->query($sql);
         $this->mainCategory = $stmt->fetch()['name'];
+        return $this->mainCategory;
     }
     public function getContents()
     {
@@ -87,11 +88,14 @@ class Post extends Dbh
         return $stmt->fetch();
     }
     //we will get a limited number of posts by category name
-    static public function getPostsByCategory($category, $limit,$offset=null,$title)
+    static public function getPostsByCategory($category, $limit,$offset=null,$title=null)
     {
         //get id of the category
         if (!is_int($limit) || $limit < 1) {
             $limit = 1;
+        }
+        if(!$title){
+            $title = '';
         }
         $sql = 'SELECT * FROM posts
                 WHERE mainCategory IN ( SELECT id
@@ -110,10 +114,13 @@ class Post extends Dbh
         $stmt->execute([$category,$title]);
         return $stmt->fetchAll();
     }
-    static public function getPosts($limit,$offset=null,$title)
+    static public function getPosts($limit,$offset=null,$title=null)
     {
         if (!is_int($limit) || $limit < 1) {
             $limit = 1;
+        }
+        if(!$title){
+            $title = '';
         }
         $sql = 'SELECT * FROM posts WHERE NOT title = ?';
         $sql .=' ORDER BY publishingDate ';
@@ -136,6 +143,33 @@ class Post extends Dbh
         $stmt->execute([$categoryId]);
         return $stmt->fetch()['name'];
     }
+    static public function insertPost($title,$authorId,$mainCategory){
+        if(self::postExists($title)){
+            return false;
+        }
+        $sql = 'INSERT INTO posts (title,authorId,mainCategory)
+                VALUES (?,?,?)';
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $stmt = $conn->prepare($sql);
+        try{
+            echo "<h1> executed<h1>";
+            $stmt->execute([$title,$authorId,$mainCategory]);
+        }catch( PDOException $e){
+            return false;
+        }
+        return true;
+    }
+    static public function getPostsByAuthorId($authorId){
+        $sql = 'SELECT * FROM posts WHERE authorId =?';
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$authorId]);
+
+        return $stmt->fetchAll();
+    }
+
 }
 
 // $a = Post::getPostByCategory('PHP', 5);

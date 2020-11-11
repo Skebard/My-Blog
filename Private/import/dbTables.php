@@ -18,6 +18,7 @@ $posts = 'CREATE TABLE posts(
     title VARCHAR(100) NOT NULL,
     mainImage VARCHAR(1000),
     description VARCHAR (1000),
+    STATUS VARCHAR (20) DEFAULT "draft",
     published BOOLEAN DEFAULT FALSE,
     creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     publishingDate DATETIME,

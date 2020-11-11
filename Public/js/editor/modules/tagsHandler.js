@@ -16,6 +16,7 @@ export default class TagsHandler {
         this.container.addEventListener('click', e => {
             if (e.target.tagName == 'LI') {
                 let mainTag = e.currentTarget.querySelector('.main');
+                this.mainTag = e.target.childNodes[0].textContent;
                 if (mainTag) {
                     mainTag.classList.remove('main');
                 }

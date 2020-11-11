@@ -19,6 +19,7 @@ export default class Box {
         if(this.pos>0){
             this.updatePrevSibling();
         }
+        Box.prototype.boxes.push(this);
 
     }
     /**
@@ -28,6 +29,7 @@ export default class Box {
      * @param {string[]} contentTypes - Array of types/tags that will be available
      */
     static initialize(container,contentTypes){
+        Box.prototype.boxes = [];
         Box.prototype.total =0;
         Box.prototype.container = container;
         //background colors for the tags
@@ -42,6 +44,10 @@ export default class Box {
         })
         style.appendChild(document.createTextNode(css));
         document.getElementsByTagName('head')[0].appendChild(style);
+    }
+    static getBoxes(){
+        Box.prototype.boxes.forEach(box=>box.updatePos());
+        return Box.prototype.boxes;
     }
     /**
      * Creates the HTMLElement of the box and returns it
@@ -95,6 +101,7 @@ export default class Box {
         boxContent.classList.add('box-content');
         boxContent.setAttribute('contenteditable', true);
         box.append(boxHeader, boxContent);
+        this.boxContentElement = boxContent;
         return box;
     }
 
@@ -200,5 +207,6 @@ export default class Box {
             this.getSibling(0).querySelector('.fa-sort-up').classList.add('hidden');
         }
         this.box.remove();
+        Box.prototype.boxes = Box.prototype.boxes.filter(b=>b!=this);
     }
 }

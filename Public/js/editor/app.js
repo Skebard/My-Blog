@@ -55,9 +55,16 @@ let boxes = [];
 //*** HTML elements ****/
 let postContent = document.getElementById("post-wrapper");
 let contentOptionsWrapper = document.getElementById('content-options-id');
+let saveBtn = document.getElementById('btn-save-id');
+let publishBtn = document.getElementById('btn-publish-id');
+let cancelBtn = document.getElementById('btn-cancel-id');
+let title = document.getElementById('title-id');
+let mainImgUrl = document.getElementById('main-image-id');
+
 
 //get
 
+//Get category tags
 
 
 
@@ -65,9 +72,13 @@ let contentOptionsWrapper = document.getElementById('content-options-id');
 
 
 Box.initialize(postContent, availableContentTypes);
+let tagHandler;
+(async function(){
+    categoryTags = await ah.getCategories();
+    tagHandler = new TagsHandler(categoryTags, selectedTagsContainer, selectTagBtn);
+    getPost();
+})();
 
-
-let tagHandler = new TagsHandler(categoryTags, selectedTagsContainer, selectTagBtn);
 //*** EVENT LISTENERS ***//
 
 
@@ -81,6 +92,7 @@ availableContentTypes.forEach(conType => {
     li.addEventListener('click', e => {
 
         let box = new Box(conType);
+        console.log(Box.getBoxes());
     });
 });
 
@@ -104,7 +116,60 @@ availableModificators2.forEach(mod => {
 });
 
 
+saveBtn.addEventListener('click',e=>{
+    let mainCategory = tagHandler.mainTag!=undefined?tagHandler.mainTag:false;
+    let categories = tagHandler.selectedTags.length>0?tagHandler.selectedTags:false;
+    let contents = [];
+    // type content
+    Box.getBoxes().forEach(box=>{
+        contents.push({
+            type: box.type,
+            content: box.box.querySelector('.box-content').innerHTML,
+            pos: box.pos
+        });
+    });
+    console.log(tagHandler.mainTag);
+    ah.save(title.textContent,mainCategory,categories,contents)
+});
+
+
+
 //*** end event listeners ***/
+
+
+//*** lOAD POST ***/
+
+
+async function getPost(){
+    let postTitle = window.location.href.split('?title=');
+    if(postTitle.length===2){
+        postTitle = postTitle[1];
+    }else{
+        window.location.replace('adminPanel.php','_self');
+    }
+    let resp = await fetch('posts/newData.php?title='+postTitle);
+    let data = await resp.json();
+
+    //set title 
+    
+    title.textContent = data.postInfo.title;
+    mainImgUrl.textContent = data.postInfo.mainImage;
+    tagHandler.selectedTags.push(data.mainCategory);
+    tagHandler.addSelectedHTMLtag(data.mainCategory);
+    tagHandler.mainCategory = data.mainCategory;
+    tagHandler.selectedTags.push(...data.categories);
+    data.categories.forEach(category=>{
+        tagHandler.addSelectedHTMLtag(category);
+    });
+    let postContents = data.postContents.sort((a,b)=>a.position-b.position);
+    postContents.forEach(section=>{
+        let a = new Box(section.type);
+        a.boxContentElement.textContent = section.content;
+    })
+
+
+    console.log(data);
+}
 
 
 window['createBoxes'] = function (x) {
@@ -112,3 +177,6 @@ window['createBoxes'] = function (x) {
         let a = new Box('text ' + i);
     }
 };
+window['createBox'] = function (x){
+    return new Box('text');
+}
