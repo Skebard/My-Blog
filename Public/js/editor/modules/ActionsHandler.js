@@ -30,6 +30,12 @@ export default class ActionsHandler{
     cancel(){
 
     }
+    create(title){
+        let data = {
+            title:title
+        }
+        this.action('create',data);
+    }
     async action(action,data){
         let formData = new FormData;
         Object.entries(data).forEach(entrie=>{

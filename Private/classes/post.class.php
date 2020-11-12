@@ -192,6 +192,20 @@ class Post extends Dbh
         }
         $stmt = $conn->prepare($sql);
         $stmt->execute($categoriesId);
+
+        $sql = 'DELETE FROM htmlelements WHERE postId=?';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        
+        $sql="";
+        $contentData =[];
+        foreach($contents as $content){
+            $sql .= 'INSERT INTO htmlelements(type,content,position,postId)
+                        VALUES (?,?,?,?);';
+                        array_push($contentData,$content->type,$content->content,$content->pos,$id);
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($contentData);
     }
 
 }

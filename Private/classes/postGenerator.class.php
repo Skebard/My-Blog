@@ -65,28 +65,45 @@ class PostGenerator extends Post
 
     public function printText($text)
     {
-        echo '<p class="text-content">' . $text . '<p>';
+        //when introducing text in different lines the editor add div containers that we have to remove
+        $text = $this->removeDivs($text);
+        echo '<p class="text-content">' . $text .' more text<p>';
     }
     public function printSubtitle($text)
     {
         echo '<h2 class="subtitle">' . $text . '</h2>';
     }
+    public function printCode($language,$text){
+        $text = str_replace('</div>','',$text);
+        $text = str_replace('<div>',"\r\n",$text);
+        echo '<pre tabindex="0" contenteditable="true" class="'.$language.' code-wrapper"><code >'
+        .$text . '</code></pre>';
+    }
     public function printContents()
     {
         $this->getContents();
         foreach($this->contents as $content){
+            //$content['content'] = $this->removeDivs($content['content']);
             switch ($content['type']) {
                 case 'text':
                     $this->printText($content['content']);
+                    
                     break;
                 case 'subtitle':
                     $this->printSubtitle($content['content']);
                     break;
+                case 'code':
+                    $this->printCode('javascript',$content['content']);
                 default:
                     break;
             }
         }
 
+    }
+    private function removeDivs($text){
+        $text = str_replace('</div>','',$text);
+        $text = str_replace('<div>','<br>',$text);
+        return $text;
     }
     public function printRelated(){
         //get 3 posts related with the main topic or secondary amd if not any topic

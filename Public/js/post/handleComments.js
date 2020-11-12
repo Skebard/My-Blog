@@ -1,8 +1,10 @@
 
 
 window.addEventListener('load',e=>{
-    let code = document.querySelector('pre');
-    hljs.highlightBlock(code);
+    let code = document.querySelectorAll('pre');
+    code.forEach(c=>{
+        hljs.highlightBlock(c);
+    })
 });
 
 // let modalComment = document.getElementById('modal-comment-sent-id');

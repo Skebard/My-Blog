@@ -29,6 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'withdraw':
             break;
+        case 'create':
+            $title = htmlentities($_POST['title']);
+            $mainCategory=2;
+            Post::insertPost($title,$author,$mainCategory);
+        break;
         default:
             break;
     }

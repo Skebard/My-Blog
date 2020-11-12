@@ -17,6 +17,9 @@ class PanelGenerator
         $header =['Title','Publishing date','Creation date'];
         $html .= $this->createTableHeader('green',$header);
         foreach($this->posts as $post){
+            if($post['STATUS']!='published'){
+                continue;
+            }
             $params = [$post['title'],$post['publishingDate'],$post['creationDate']];
             $html .= $this->createRow($params);
         }
@@ -25,9 +28,33 @@ class PanelGenerator
     }
     public function printDraftTable()
     {
+        $html = '<div class="table draft ">';
+        $header =['Title','Last modification date','Creation date'];
+        $html .= $this->createTableHeader('blue',$header);
+        foreach($this->posts as $post){
+            if($post['STATUS']!='draft'){
+                continue;
+            }
+            $params = [$post['title'],$post['lastModificationDate'],$post['creationDate']];
+            $html .= $this->createRow($params);
+        }
+        $html .='</div>';
+        echo $html;
     }
     public function printDeletedTable()
     {
+        $html = '<div class="table draft ">';
+        $header =['Title','Deletion date','Creation date'];
+        $html .= $this->createTableHeader('',$header);
+        foreach($this->posts as $post){
+            if($post['STATUS']!='deleted'){
+                continue;
+            }
+            $params = [$post['title'],$post['modificationDate'],$post['creationDate']];
+            $html .= $this->createRow($params);
+        }
+        $html .='</div>';
+        echo $html;
     }
     private function createRow($params)
     {
@@ -41,7 +68,7 @@ class PanelGenerator
     }
     private function createTableHeader($color, $params)
     {
-        $html = '<div class="row header' . $color . ' green">';
+        $html = '<div class="row header ' . $color . ' ">';
         foreach ($params as $param) {
             $html .= '<div class="cell">'
                 . htmlentities($param) .

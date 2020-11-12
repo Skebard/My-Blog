@@ -34,3 +34,42 @@ https://www.cloudways.com/blog/introduction-php-data-objects/
 
 //videos
 https://www.youtube.com/watch?v=NVQ-yyz2t_Q
+
+
+//closing connection
+https://thisinterestsme.com/close-pdo-connection/
+
+
+
+
+
+This article describes how to use PDO in order to connect with a MySQL database.
+
+According to the PHP manual, "The PHP Data Objects (PDO) defines a lightweight interface for accessing databases in PHP". 
+To be clear, PDO is a class from which you can make instances and use those intances to create a connection to your database.
+
+
+Connections
+
+The PDO connection is creating when instatiating the class. The PDO constructor requieres the data source name (DSN), the username and the password.
+The DSN contains the information required to connect to the database
+
+In the following code you can see how we are trying to connect with a database called 'test' that is in our localhost
+
+CODE 1
+
+
+If the connection fails then a PDOException will be thrown. For this reason when the connection is wrapped in a try/catch.
+Now we have succesfully connected to our database. Notice that in the previous example we have connected to an already created database.
+If you want to create your database from PHP then in the DNS you do not have to specify the name of the database. Let's see the following example:
+
+CODE2
+
+Once the connection has succeded then we can use the methods provided by the PDO class to perform queries.
+The main methods to execute queries from a PDO instance are:
+	query(string $statement): execute an SQL statement and allows you to retrieve  the data from  a SELECT statement using the fetch method
+        exec(string $statement):  execute an SQL statement but will not let you get the data in case of a SELECT statement
+CODE 3
+
+
+

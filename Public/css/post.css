@@ -93,6 +93,16 @@
 }
 /*** end author info ***/
 
+
+/*** CODE ***/
+.code-wrapper{
+    border-radius:1rem;
+    padding:0.4rem;
+    margin: 1rem 0;
+
+}
+/*** end code ***/
+
 /*** Comments**/
 .comments {
     overflow: hidden;

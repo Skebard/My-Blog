@@ -24,7 +24,7 @@ let content3 = {
 };
 let contents = [content1,content2,content3];
 
-ah.action('create', 'hello is the latest published post', 'Skebard', contents);
+//ah.action('create', 'hello is the latest published post', 'Skebard', contents);
 
 
 
@@ -166,7 +166,7 @@ async function getPost(){
     let postContents = data.postContents.sort((a,b)=>a.position-b.position);
     postContents.forEach(section=>{
         let a = new Box(section.type);
-        a.boxContentElement.textContent = section.content;
+        a.boxContentElement.innerHTML = section.content;
     })
 
 

@@ -10,7 +10,7 @@ require '../Private/classes/panelGenerator.class.php';
     <link rel='stylesheet' href="../Public/css/main2.css">
     <link rel="stylesheet" href="../Public/css/editor.css">
     <link rel='stylesheet' href="../Public/css/adminPanel.css">
-    <script defer src="../Public/js/adminPanel/app.js"></script>
+    <script defer  type="module" src="../Public/js/adminPanel/app.js"></script>
     <!--Font awesome-->
     <script src="https://kit.fontawesome.com/9547750bbd.js" crossorigin="anonymous"></script>
 </head>
@@ -27,7 +27,7 @@ require '../Private/classes/panelGenerator.class.php';
                     <li>Styles</li>
                     <li>Settings</li>
                 </ul>
-                <div class='create-post-btn'>New post</div>
+                <div id='create-post-btn-id' class='create-post-btn'>New post</div>
             </aside>
             <div class='main-content'>
                 <ul class='legend'>
@@ -40,6 +40,8 @@ require '../Private/classes/panelGenerator.class.php';
 
             $a = new PanelGenerator(1);
             $a->printPublishedTable();
+            $a->printDraftTable();
+            $a->printDeletedTable();
                     ?>
 
                 </div>
@@ -48,6 +50,15 @@ require '../Private/classes/panelGenerator.class.php';
 
 
     </main>
+    <div id='modal-create-post-id' class='modal hidden'>
+        <div class='modal-content'>;
+        <form id = 'create-post-form-id'>
+            <input  name='post-title' type="text">
+            <input type="submit" value = 'Create'>
+        </form>
+        <button id='cancel-id'> cancel</button>
+        </div>
+    </div>
 
     <footer>
 

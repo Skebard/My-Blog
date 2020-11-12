@@ -78,6 +78,22 @@
 }
 /*** end legend ***/
 
+/*** Create post MODAL***/
+.modal-content{
+    z-index:99;
+}
+
+/*** end create post modal ***/
+
+
+
+
+
+/*** TABLE ***/
+.row > div{
+    width:33%;
+}
+
 body {
     font-family: "Helvetica Neue", Helvetica, Arial;
     font-size: 14px;
