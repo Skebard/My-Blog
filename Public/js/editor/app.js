@@ -83,7 +83,11 @@ let tagHandler;
 
 //*** EVENT LISTENERS ***//
 
+//go back to the adminPanel
+cancelBtn.addEventListener('click',e=>{
+    window.location.href = 'adminPanel.php';
 
+});
 
 
 //Create selectable tags and add event listeners to add boxes

@@ -93,6 +93,13 @@
 .row > div{
     width:33%;
 }
+.row.post{
+    cursor:pointer;
+    transition: all 0.4s;
+}
+.row.post:hover{
+    transform:scale(1.2);
+}
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial;

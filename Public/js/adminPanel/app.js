@@ -38,11 +38,12 @@ createPostForm.addEventListener('submit',e=>{
     let ah = new ActionsHandler;
     console.log('crreate');
     ah.create(e.currentTarget.elements['post-title'].value);
-    window.location.reload();
+    setTimeout(function(){window.location.reload();},100);
 });
 
 cancelBtn.addEventListener('click',e=>{
-    createPostForm.classList.add('hidden');
+    console.log('hi');
+    modalCreatePost.classList.add('hidden');
 });
 
 
