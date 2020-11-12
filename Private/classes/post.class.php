@@ -38,7 +38,8 @@ class Post extends Dbh
     }
 
 
-    static public function postStatus($postTitle){
+    static public function postStatus($postTitle)
+    {
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $postTitle = htmlentities($postTitle);
@@ -46,7 +47,8 @@ class Post extends Dbh
         $stmt->execute([$postTitle]);
         return $stmt->fetch()['STATUS'];
     }
-    static public function getPostsByStatus($status){
+    static public function getPostsByStatus($status)
+    {
         $sql = 'SELECT * FROM posts WHERE status = ?';
         $pdo = new Dbh;
         $conn = $pdo->connect();
@@ -105,62 +107,71 @@ class Post extends Dbh
         return $stmt->fetch();
     }
     //we will get a limited number of posts by category name
-    static public function getPostsByCategory($category, $limit,$offset=null,$title=null)
+    static public function getPostsByCategory($category, $limit, $offset = null, $title = null, $status = null)
     {
         //get id of the category
         if (!is_int($limit) || $limit < 1) {
             $limit = 1;
         }
-        if(!$title){
+        if (!$title) {
             $title = '';
         }
         $sql = 'SELECT * FROM posts
                 WHERE mainCategory IN ( SELECT id
                 FROM categories
                 WHERE name = ?) AND NOT title =?';
-        $sql .=' ORDER BY publishingDate ';
+        if ($status) {
+            $sql .= ' AND STATUS = ? ';
+        }
+        $sql .= ' ORDER BY publishingDate ';
         $sql .= 'LIMIT ' . htmlentities($limit);
 
 
-        if($offset){
-            $sql.=' OFFSET '.htmlentities($offset);
+        if ($offset) {
+            $sql .= ' OFFSET ' . htmlentities($offset);
         }
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$category,$title]);
+        if($status){
+            $stmt->execute([$category, $title,$status]);
+
+        }else{
+            $stmt->execute([$category, $title]);
+        }
         return $stmt->fetchAll();
     }
-    static public function getPosts($limit,$offset=null,$title=null,$status=null)
+    static public function getPosts($limit, $offset = null, $title = null, $status = null)
     {
         if (!is_int($limit) || $limit < 1) {
             $limit = 1;
         }
-        if(!$title){
+        if (!$title) {
             $title = '';
         }
         $sql = 'SELECT * FROM posts WHERE NOT title = ?';
-        if($status){
-            $sql .=' AND STATUS = ? ';
+        if ($status) {
+            $sql .= ' AND STATUS = ? ';
         }
-        $sql .=' ORDER BY publishingDate ';
+        $sql .= ' ORDER BY publishingDate ';
         $sql .= 'LIMIT ' . htmlentities($limit);
 
-        if($offset){
-            $sql.=' OFFSET '.htmlentities($offset);
+        if ($offset) {
+            $sql .= ' OFFSET ' . htmlentities($offset);
         }
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $stmt = $conn->prepare($sql);
-        if($status){
-            $stmt->execute([$title,$status]);
-        }else{
+        if ($status) {
+            $stmt->execute([$title, $status]);
+        } else {
             $stmt->execute([$title]);
         }
 
         return $stmt->fetchAll();
     }
-    static public function getCategoryName($categoryId){
+    static public function getCategoryName($categoryId)
+    {
         $sql = 'SELECT name FROM categories WHERE id=?';
         $pdo = new Dbh;
         $conn = $pdo->connect();
@@ -168,8 +179,9 @@ class Post extends Dbh
         $stmt->execute([$categoryId]);
         return $stmt->fetch()['name'];
     }
-    static public function insertPost($title,$authorId,$mainCategory){
-        if(self::postExists($title)){
+    static public function insertPost($title, $authorId, $mainCategory)
+    {
+        if (self::postExists($title)) {
             return false;
         }
         $sql = 'INSERT INTO posts (title,authorId,mainCategory)
@@ -177,16 +189,17 @@ class Post extends Dbh
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $stmt = $conn->prepare($sql);
-        try{
+        try {
             echo "<h1> executed<h1>";
-            $stmt->execute([$title,$authorId,$mainCategory]);
-        }catch( PDOException $e){
+            $stmt->execute([$title, $authorId, $mainCategory]);
+        } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
         }
         return true;
     }
-    static public function getPostsByAuthorId($authorId){
+    static public function getPostsByAuthorId($authorId)
+    {
         $sql = 'SELECT * FROM posts WHERE authorId =?';
         $pdo = new Dbh;
         $conn = $pdo->connect();
@@ -195,25 +208,26 @@ class Post extends Dbh
 
         return $stmt->fetchAll();
     }
-    static public function updatePost($id,$title,$mainImage,$description,$mainCategoryId,$categories,$contents){
+    static public function updatePost($id, $title, $mainImage, $description, $mainCategoryId, $categories, $contents)
+    {
         $sql = "UPDATE posts
                 SET title = ?,mainImage = ?, description = ?,mainCategory =?
                 WHERE id =?";
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$title,$mainImage,$description,$mainCategoryId,$id]);
+        $stmt->execute([$title, $mainImage, $description, $mainCategoryId, $id]);
 
         $sql = "DELETE FROM postcategories WHERE postId=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
         $sql = '';
         require_once 'category.php';
-        $categoriesId=[];
-        foreach($categories as $cat){
+        $categoriesId = [];
+        foreach ($categories as $cat) {
             $sql .= 'INSERT INTO postcategories(postId,categoryId)
                     VALUES (?,?);';
-            array_push($categoriesId,$id,Category::getCategoryId($cat));
+            array_push($categoriesId, $id, Category::getCategoryId($cat));
         }
         $stmt = $conn->prepare($sql);
         $stmt->execute($categoriesId);
@@ -221,25 +235,25 @@ class Post extends Dbh
         $sql = 'DELETE FROM htmlelements WHERE postId=?';
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
-        
-        $sql="";
-        $contentData =[];
-        foreach($contents as $content){
-            if($content->type==='code'){
+
+        $sql = "";
+        $contentData = [];
+        foreach ($contents as $content) {
+            if ($content->type === 'code') {
                 $sql .= 'INSERT INTO htmlelements(type,content,position,postId,options)
                 VALUES (?,?,?,?,?);';
-                array_push($contentData,$content->type,$content->content,$content->pos,$id,$content->lang);
-            }else{
+                array_push($contentData, $content->type, $content->content, $content->pos, $id, $content->lang);
+            } else {
                 $sql .= 'INSERT INTO htmlelements(type,content,position,postId)
                 VALUES (?,?,?,?);';
-                array_push($contentData,$content->type,$content->content,$content->pos,$id);
+                array_push($contentData, $content->type, $content->content, $content->pos, $id);
             }
-
         }
         $stmt = $conn->prepare($sql);
         $stmt->execute($contentData);
     }
-    static function publish($id){
+    static function publish($id)
+    {
         $sql = 'UPDATE posts
                 SET STATUS="published"
                 WHERE id=?';
@@ -250,7 +264,6 @@ class Post extends Dbh
         $stmt->execute([$id]);
         return true;
     }
-
 }
 
 // $a = Post::getPostByCategory('PHP', 5);

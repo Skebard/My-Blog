@@ -38,7 +38,7 @@ else{
     $posts;
     if(isset($_GET['category']) && $_GET['category']!='All'){
         $category = $_GET['category'];
-        $posts = Post::getPostsByCategory($category,$limit,$offset);
+        $posts = Post::getPostsByCategory($category,$limit,$offset,'','published');
         $response->count = $blog->getNumPosts($category);
         $response->queries +=2;
     }else{
