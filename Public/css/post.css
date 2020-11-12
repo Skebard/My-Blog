@@ -285,7 +285,8 @@
     margin-bottom:2rem;
 }
 .related-posts-wrapper > li  img{
-    max-height:250px;
+    width:350px;
+    height:250px;
     object-fit:cover;
 }
 .related-post-info{
@@ -309,9 +310,14 @@
     justify-content: flex-start;
     align-items:center;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 660px){
     .related-posts-wrapper > li{
         flex-direction:column;
+    }
+    .related-posts-wrapper > li  img{
+        width:250px;
+        height:150px;
+        object-fit:cover;
     }
 
 }

@@ -18,18 +18,17 @@ export default class ActionsHandler{
     }
 
     //sent all the data to server and get response
-    publish(){
-
+    publish(id){
+        let data = {
+            id:id
+        };
+        this.action('publish',data);
     }
 
     withdaw(){
 
     }
 
-  
-    cancel(){
-
-    }
     create(title){
         let data = {
             title:title

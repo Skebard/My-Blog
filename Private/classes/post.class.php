@@ -239,6 +239,17 @@ class Post extends Dbh
         $stmt = $conn->prepare($sql);
         $stmt->execute($contentData);
     }
+    static function publish($id){
+        $sql = 'UPDATE posts
+                SET STATUS="published"
+                WHERE id=?';
+        echo $sql;
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        return true;
+    }
 
 }
 

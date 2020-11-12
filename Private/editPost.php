@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             var_dump($response);
             break;
         case 'publish':
+            Post::publish($_POST['id']);
             break;
         case 'withdraw':
             break;

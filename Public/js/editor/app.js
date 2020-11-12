@@ -86,8 +86,8 @@ let tagHandler;
 //go back to the adminPanel
 cancelBtn.addEventListener('click',e=>{
     window.location.href = 'adminPanel.php';
-
 });
+
 
 
 //Create selectable tags and add event listeners to add boxes
@@ -121,6 +121,10 @@ availableModificators2.forEach(mod => {
     })
 });
 
+publishBtn.addEventListener('click',e=>{
+    ah.publish(postId);
+    saveBtn.click();
+});
 
 saveBtn.addEventListener('click',e=>{
     let mainCategory = tagHandler.mainTag;
