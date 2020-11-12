@@ -67,7 +67,7 @@ class PostGenerator extends Post
     {
         //when introducing text in different lines the editor add div containers that we have to remove
         $text = $this->removeDivs($text);
-        echo '<p class="text-content">' . $text .' more text<p>';
+        echo '<p class="text-content">' . $text .'<p>';
     }
     public function printSubtitle($text)
     {
@@ -93,7 +93,7 @@ class PostGenerator extends Post
                     $this->printSubtitle($content['content']);
                     break;
                 case 'code':
-                    $this->printCode('javascript',$content['content']);
+                    $this->printCode('PHP',$content['content']);
                 default:
                     break;
             }

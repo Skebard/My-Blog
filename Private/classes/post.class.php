@@ -36,6 +36,23 @@ class Post extends Dbh
         }
         return true;
     }
+
+
+    static public function postStatus($postTitle){
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $postTitle = htmlentities($postTitle);
+        $stmt = $conn->prepare('SELECT STATUS FROM posts WHERE title=?');
+        $stmt->execute([$postTitle]);
+        return $stmt->fetch()['STATUS'];
+    }
+    static public function getPostsByStatus($status){
+        $sql = 'SELECT * FROM posts WHERE status = ?';
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$status]);
+    }
     public function getAuthor()
     {
         $sql = 'SELECT * FROM authors WHERE id=' . $this->postInfo['authorId'];
@@ -114,7 +131,7 @@ class Post extends Dbh
         $stmt->execute([$category,$title]);
         return $stmt->fetchAll();
     }
-    static public function getPosts($limit,$offset=null,$title=null)
+    static public function getPosts($limit,$offset=null,$title=null,$status=null)
     {
         if (!is_int($limit) || $limit < 1) {
             $limit = 1;
@@ -123,6 +140,9 @@ class Post extends Dbh
             $title = '';
         }
         $sql = 'SELECT * FROM posts WHERE NOT title = ?';
+        if($status){
+            $sql .=' AND STATUS = ? ';
+        }
         $sql .=' ORDER BY publishingDate ';
         $sql .= 'LIMIT ' . htmlentities($limit);
 
@@ -132,7 +152,12 @@ class Post extends Dbh
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$title]);
+        if($status){
+            $stmt->execute([$title,$status]);
+        }else{
+            $stmt->execute([$title]);
+        }
+
         return $stmt->fetchAll();
     }
     static public function getCategoryName($categoryId){

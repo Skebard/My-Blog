@@ -42,10 +42,11 @@ else{
         $response->count = $blog->getNumPosts($category);
         $response->queries +=2;
     }else{
-        $posts = Post::getPosts(intval($limit),intval($offset));
+        $posts = Post::getPosts(intval($limit),intval($offset),'','published');
         $response->count = $blog->getNumPosts();
         $response->queries +=2;
     }
+    $response->allPosts = [];
 
     foreach($posts as $post){
         $authorInfo = Post::getAuthorInfo($post['authorId']);
