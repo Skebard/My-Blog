@@ -87,13 +87,12 @@ class PostGenerator extends Post
             switch ($content['type']) {
                 case 'text':
                     $this->printText($content['content']);
-                    
                     break;
                 case 'subtitle':
                     $this->printSubtitle($content['content']);
                     break;
                 case 'code':
-                    $this->printCode('PHP',$content['content']);
+                    $this->printCode($content['options'],$content['content']);
                 default:
                     break;
             }

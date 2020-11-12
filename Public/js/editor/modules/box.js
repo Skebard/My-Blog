@@ -3,6 +3,7 @@
  * Important: before instantiating any object the static method initialize must be called
 */
 export default class Box {
+    static languages = ['javascript','css','php','html'];
     sayhi(){
         console.log('hi');
     }
@@ -95,6 +96,22 @@ export default class Box {
         let trash = document.createElement('i');
         trash.className = "fas fa-trash-alt";
         trash.addEventListener('click', () => this.delete());
+        //if it is code we have to add a selector with the available programming languages
+        if(this.type ==='code'){
+            let selLang = document.createElement('select');
+            //this.selLang = selLang;
+            Box.languages.forEach(lang=>{
+                let opt = document.createElement('option');
+                opt.value = lang;
+                opt.textContent = lang;
+                selLang.appendChild(opt);
+            });
+            selLang.addEventListener('change',e=>{
+                this.language = selLang.selectedOptions[0].value;
+                console.log(this.language);
+            });
+            rightContainer.append(selLang);
+        }
         rightContainer.append(type, trash);
         boxHeader.append(arrows, rightContainer);
         let boxContent = document.createElement('div');

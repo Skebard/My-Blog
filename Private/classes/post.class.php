@@ -225,9 +225,16 @@ class Post extends Dbh
         $sql="";
         $contentData =[];
         foreach($contents as $content){
-            $sql .= 'INSERT INTO htmlelements(type,content,position,postId)
-                        VALUES (?,?,?,?);';
-                        array_push($contentData,$content->type,$content->content,$content->pos,$id);
+            if($content->type==='code'){
+                $sql .= 'INSERT INTO htmlelements(type,content,position,postId,options)
+                VALUES (?,?,?,?,?);';
+                array_push($contentData,$content->type,$content->content,$content->pos,$id,$content->lang);
+            }else{
+                $sql .= 'INSERT INTO htmlelements(type,content,position,postId)
+                VALUES (?,?,?,?);';
+                array_push($contentData,$content->type,$content->content,$content->pos,$id);
+            }
+
         }
         $stmt = $conn->prepare($sql);
         $stmt->execute($contentData);

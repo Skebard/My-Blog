@@ -6,6 +6,7 @@ $htmlElements = 'CREATE TABLE htmlElements(
     content TEXT NOT NULL,
     position INT(6) NOT NULL,
     postId INT(6) UNSIGNED NOT NULL,
+    options CHAR(50) DEFAULT "javascript",
     UNIQUE(position,postId),
     CONSTRAINT fk_ph_post_id
         FOREIGN KEY (postId)
@@ -79,47 +80,3 @@ $authors = 'CREATE TABLE authors(
     UNIQUE (email)
     )';
 
-
-/*
-
-INSERT INTO authors ( firstName, lastName1, lastName2)
-VALUES ('Antonio','Jorda','Aparicio');
-
-INSERT INTO authors ( firstName, lastName1, lastName2)
-VALUES ('Bernat','Jorda','Quetglas');
-
-INSERT INTO authors ( firstName, lastName1, lastName2)
-VALUES ('Cati','Calafell','Quetglas');
-
-
-INSERT INTO posts ( authorId,title)
-VALUES (1,'Getting started with PHP');
-INSERT INTO posts ( authorId,title)
-VALUES (1, 'Using composer');
-INSERT INTO posts ( authorId,title)
-VALUES (1, 'OOP javascript');
-INSERT INTO posts ( authorId,title)
-VALUES (1, 'Laravel');
-INSERT INTO posts ( authorId,title)
-VALUES (2, 'Unit testing');
-INSERT INTO posts ( authorId,title)
-VALUES (3, 'OOP PHP');
-INSERT INTO posts ( authorId,title)
-VALUES (3, 'Python');
-
-
-INSERT INTO htmlElements ( type, content, postId)
-VALUES ('title','My first post',1);
-
-INSERT INTO htmlElements ( type, content, postId)
-VALUES ('text','This blog is still under development',1);
-
-INSERT INTO htmlElements ( type, content, postId)
-VALUES ('subtitle','My subtitle',1);
-
-
-INSERT INTO comments (username,email,content,postId)
-VALUES ('Lara','lara@gmail.com','Please keep posting',1);
-
-
-*/

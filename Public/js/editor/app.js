@@ -124,11 +124,15 @@ saveBtn.addEventListener('click',e=>{
     let contents = [];
     // type content
     Box.getBoxes().forEach(box=>{
-        contents.push({
+        let dataObj = {
             type: box.type,
             content: box.box.querySelector('.box-content').innerHTML,
             pos: box.pos
-        });
+        }
+        if(box.type ==='code'){
+            dataObj.lang = box.language;
+        }
+        contents.push(dataObj);
     });
     console.log(tagHandler.mainTag);
     ah.save(postId,title.textContent,mainImgUrl.textContent,mainCategory,categories,contents);
