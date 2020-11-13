@@ -12,6 +12,8 @@
     
     <link rel="stylesheet" href="../../Public/css/main.css">
     <link rel="stylesheet" href="../../Public/css/post.css">
+    <link rel='stylesheet' href='../../Public/css/subscription.css'>
+
 
     <script defer src='../../Public/js/header.js'></script>
     <script defer src='../../Public/js/post/handleComments.js'></script>

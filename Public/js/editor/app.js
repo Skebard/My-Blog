@@ -171,6 +171,7 @@ async function getPost(){
     tagHandler.selectedTags.push(data.mainCategory);
     tagHandler.addSelectedHTMLtag(data.mainCategory);
     tagHandler.mainTag = data.mainCategory;
+    data.categories = data.categories.filter(cat=>cat!==data.mainCategory);
     tagHandler.selectedTags.push(...data.categories);
     data.categories.forEach(category=>{
         tagHandler.addSelectedHTMLtag(category);

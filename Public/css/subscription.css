@@ -1,0 +1,34 @@
+/*** SUBSCRIBE FORM ***/
+.subscription-container{
+    padding:2rem;
+    background-color:rgb(255, 191, 104);
+}
+.title-subscribe{
+    margin-bottom:1rem;
+    font-size:2rem;
+}
+
+.subscribe-form{
+    margin-top:1rem;
+    margin-bottom:1rem;
+    display:flex;
+}
+.subscribe-form input[name='email']{
+    flex-grow:1;
+}
+.subscribe-form input[name='email'],
+.subscribe-form input[type='submit']{
+    padding:1.4rem;
+    font-size:1.2rem;
+    border:none;
+}
+.subscribe-form input[type='submit']{
+    background-color:black;
+    margin-left:1rem;
+    color:white;
+}
+
+.subscribe-form input[type='submit']{
+
+}
+/*** end subscribe form ***/

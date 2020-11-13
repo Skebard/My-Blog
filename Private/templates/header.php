@@ -11,6 +11,7 @@
 
     
     <link rel="stylesheet" href="../Public/css/main.css">
+    
     <script defer src='../Public/js/header.js'></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,6 +26,7 @@
     //Set scripts and styles depending on the page
     if($current_dir ==='blog'){
         // echo '<link rel="stylesheet" href="../public/css/index.css">';
+        echo '<link rel="stylesheet" href="../Public/css/subscription.css">';
         echo '<link rel="stylesheet" href="../public/css/blog.css">';
         echo '<script defer src="../public/js/blog/blog.js"></script>';
 

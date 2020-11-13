@@ -82,10 +82,6 @@ $_SESSION['step']="I am in step 1";
 
             </ul>
 
-
-         
-
-
         </div>
         <div class="load-more center" id='load-more-btn-id'>
             <button class="center btn-load-more">load more </button>
@@ -94,6 +90,10 @@ $_SESSION['step']="I am in step 1";
 
 
     </div>
+
+    <?php
+    require '../Private/templates/subscription.php';
+    ?>
 </main>
 
 <?php

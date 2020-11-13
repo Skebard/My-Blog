@@ -167,7 +167,9 @@ class PostGenerator extends Post
     }
     public function closeMain()
     {
-        echo '</div></main>';
+        echo '</div>';
+        require '../../Private/templates/subscription.php';
+        echo '</main>';
     }
 }
 
