@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             sendMails();
             break;
         case 'withdraw':
+            Post::withdraw($_POST['id']);
             break;
         case 'create':
             $title = htmlentities($_POST['title']);

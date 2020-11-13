@@ -25,8 +25,11 @@ export default class ActionsHandler{
         this.action('publish',data);
     }
 
-    withdaw(){
-
+    withdraw(id){
+        let data = {
+            id:id
+        };
+        this.action('withdraw',data);
     }
 
     create(title){

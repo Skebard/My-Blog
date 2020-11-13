@@ -133,10 +133,9 @@ class Post extends Dbh
         $pdo = new Dbh;
         $conn = $pdo->connect();
         $stmt = $conn->prepare($sql);
-        if($status){
-            $stmt->execute([$category, $title,$status]);
-
-        }else{
+        if ($status) {
+            $stmt->execute([$category, $title, $status]);
+        } else {
             $stmt->execute([$category, $title]);
         }
         return $stmt->fetchAll();
@@ -257,6 +256,18 @@ class Post extends Dbh
         $sql = 'UPDATE posts
                 SET STATUS="published"
                 WHERE id=?';
+        echo $sql;
+        $pdo = new Dbh;
+        $conn = $pdo->connect();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        return true;
+    }
+    static function withdraw($id)
+    {
+        $sql = 'UPDATE posts
+        SET STATUS="draft"
+        WHERE id=?';
         echo $sql;
         $pdo = new Dbh;
         $conn = $pdo->connect();

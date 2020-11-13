@@ -58,6 +58,7 @@ let contentOptionsWrapper = document.getElementById('content-options-id');
 let saveBtn = document.getElementById('btn-save-id');
 let publishBtn = document.getElementById('btn-publish-id');
 let cancelBtn = document.getElementById('btn-cancel-id');
+let withdrawBtn = document.getElementById('btn-withdraw-id');
 let title = document.getElementById('title-id');
 let mainImgUrl = document.getElementById('main-image-id');
 
@@ -121,6 +122,9 @@ availableModificators2.forEach(mod => {
     })
 });
 
+withdrawBtn.addEventListener('click',e=>{
+    ah.withdraw(postId);
+});
 publishBtn.addEventListener('click',e=>{
     ah.publish(postId);
     saveBtn.click();
@@ -182,7 +186,15 @@ async function getPost(){
         a.boxContentElement.innerHTML = section.content;
     })
 
+ 
 
+    if(data.postInfo.STATUS==='published'){
+        //hide publish button
+        publishBtn.classList.add('hidden');
+        //show withdraw btn
+    }else{
+        withdrawBtn.classList.add('hidden');
+    }
     console.log(data);
 }
 

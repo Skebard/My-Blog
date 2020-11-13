@@ -44,6 +44,7 @@
                     <button id='btn-cancel-id' class='my-btn btn-cancel'>Cancel</button>
                     <button id='btn-save-id' class='my-btn btn-save'>Save</button>
                     <button id='btn-publish-id' class='my-btn btn-publish'>Publish</button>
+                    <button id='btn-withdraw-id' class='my-btn btn-publish'>Withdraw</button>
                 </div>
             </div>
             <div id="post-wrapper" class="post-wrapper">
