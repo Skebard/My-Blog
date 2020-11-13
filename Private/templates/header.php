@@ -29,6 +29,7 @@
         echo '<link rel="stylesheet" href="../Public/css/subscription.css">';
         echo '<link rel="stylesheet" href="../public/css/blog.css">';
         echo '<script defer src="../public/js/blog/blog.js"></script>';
+        echo '<script defer src="../public/js/subscribe/subscribe.js"></script>';
 
     }else if($current_dir === 'about'){
 

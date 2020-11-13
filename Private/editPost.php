@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'publish':
             Post::publish($_POST['id']);
+            sendMails();
             break;
         case 'withdraw':
             break;
@@ -39,3 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
     }
 }
+
+
+function sendMails(){
+    $emails = json_decode(file_get_contents('emails.json'));
+    echo json_encode($emails);
+    require 'sendemail.php';
+    foreach($emails as $email){
+        sendMail($email);
+    }
+}
+
+
