@@ -13,7 +13,6 @@ console.log(e.target);
     let title;
     //check if the row is clicked
     if(e.target.classList.contains('post') ){
-        console.log('yes');
         title = e.target.children[0].textContent;
     //check if one column of the row has been clicked
     }else if(e.target.parentElement.classList.contains('post')){
@@ -29,20 +28,17 @@ console.log(e.target);
 });
 
 createPostBtn.addEventListener('click',e=>{
-    console.log('hi');
     modalCreatePost.classList.remove('hidden');
 });
 
 createPostForm.addEventListener('submit',e=>{
     e.preventDefault();
     let ah = new ActionsHandler;
-    console.log('crreate');
     ah.create(e.currentTarget.elements['post-title'].value);
     setTimeout(function(){window.location.reload();},100);
 });
 
 cancelBtn.addEventListener('click',e=>{
-    console.log('hi');
     modalCreatePost.classList.add('hidden');
 });
 

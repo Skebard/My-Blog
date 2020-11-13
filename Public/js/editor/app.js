@@ -124,10 +124,16 @@ availableModificators2.forEach(mod => {
 
 withdrawBtn.addEventListener('click',e=>{
     ah.withdraw(postId);
+    withdrawBtn.classList.add('hidden');
+    publishBtn.classList.remove('hidden');
 });
 publishBtn.addEventListener('click',e=>{
     ah.publish(postId);
     saveBtn.click();
+    withdrawBtn.classList.remove('hidden');
+    publishBtn.classList.add('hidden');
+
+
 });
 
 saveBtn.addEventListener('click',e=>{
