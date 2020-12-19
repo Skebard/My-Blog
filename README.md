@@ -18,7 +18,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Control management system for a blog. It allows to create, edit, publish and withdraw posts. 
+Control management system for a blog. It allows to create, edit, publish and withdraw posts. You can find the next version of this project
+    <a href="https://github.com/Skebard/CMS-for-blog-with-MVC-model">here.</a>
+
 
 - Main page
 ![Screenshot1](DocAssets/images/blog1.png)
