@@ -9,6 +9,10 @@
 
 
   <h1 align="center">CMS FOR A BLOG</h1>
+    <p align='center'>
+  <a href='https://tonijorda.com/myProjects/PHP/blogCMS/blog.php'>View Demo*</a>
+  This demo corresponds to the next version.
+  </p>
 </p>
 
 
