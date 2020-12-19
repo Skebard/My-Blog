@@ -1,6 +1,6 @@
 <?php
 //this endpoint provides  the data  that is displayed in the main blog page
-require '../../Private/classes/blog.class.php';
+require __DIR__.'/../../Private/classes/blog.class.php';
 
 $response = new stdClass;
 

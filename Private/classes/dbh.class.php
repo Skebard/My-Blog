@@ -12,7 +12,7 @@ class Dbh
     {
         $this->servername = 'localhost';
         $this->username = 'root';
-        $this->password = '';
+        $this->password = 'Mypass#1234';
         $this->dbname = 'my_blog01';
         $this->charset = 'utf8mb4';
 
@@ -66,7 +66,7 @@ class Dbh
             $pdo = new PDO($this->dsn, $this->username, $this->password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            require '../import/dbTables.php';
+            require __DIR__.'/../import/dbTables.php';
             $pdo->exec($categories);
             $pdo->exec($authors);
             $pdo->exec($posts);
@@ -82,7 +82,7 @@ class Dbh
 
     public function insertInitialData($pdo)
     {
-        require '../import/initialData.php';
+        require __DIR__.'/../import/initialData.php';
         try{
             $pdo->exec($initialData);
             return true;

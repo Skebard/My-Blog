@@ -26,10 +26,18 @@
     //Set scripts and styles depending on the page
     if($current_dir ==='blog'){
         // echo '<link rel="stylesheet" href="../public/css/index.css">';
-        echo '<link rel="stylesheet" href="../Public/css/subscription.css">';
-        echo '<link rel="stylesheet" href="../public/css/blog.css">';
-        echo '<script defer src="../public/js/blog/blog.js"></script>';
-        echo '<script defer src="../public/js/subscribe/subscribe.js"></script>';
+        // echo '<link rel="stylesheet" href="../Public/css/subscription.css">';
+        // echo '<link rel="stylesheet" href="../public/css/blog.css">';
+        // echo '<script defer src="../public/js/blog/blog.js"></script>';
+        // echo '<script defer src="../public/js/subscribe/subscribe.js"></script>';
+
+
+        //If there ar no folders upper it
+        echo '<link rel="stylesheet" href="/Public/css/subscription.css">';
+        echo '<link rel="stylesheet" href="/Public/css/blog.css">';
+        echo '<script defer src="/Public/js/blog/blog.js"></script>';
+        echo '<script defer src="/Public/js/subscribe/subscribe.js"></script>';
+
 
     }else if($current_dir === 'about'){
 

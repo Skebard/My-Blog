@@ -1,5 +1,5 @@
 <?php
-require 'dbh.class.php';
+require __DIR__.'/dbh.class.php';
 // the class post provides all the methods to modify/retrieve data from an existing post
 class Post extends Dbh
 {
